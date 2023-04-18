@@ -1,0 +1,65 @@
+.cast_container {
+  margin-top: 12rem;
+  display: flex;
+  flex-direction: column;
+}
+.cast_container > h2 {
+  font-size: 6rem;
+  margin-bottom: 3rem;
+}
+
+.cast_movie {
+  color: #618DD5;
+}
+
+.cast_tv {
+  color: #C9C236;
+}
+
+.cc_grid {
+  display: grid;
+  max-width: 650px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  margin-bottom: 3rem;
+}
+@media (min-width: 450px) {
+  .cc_grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 650px) {
+  .cc_grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.no_cc_header {
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+.show_more_container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.show_more {
+  background: #C9C236;
+  color: black;
+  font-weight: 400;
+  padding: 1rem;
+  width: 100%;
+  transition: all 0.4s ease-in-out;
+}
+.show_more:hover {
+  background: #a19b2b;
+}
+@media (min-width: 400px) {
+  .show_more {
+    max-width: 150px;
+  }
+}
+
+/*# sourceMappingURL=MediaCastCrew.module.css.map */

@@ -1,0 +1,39 @@
+.trailer_container {
+  margin-top: 12rem;
+  margin-bottom: 3rem;
+}
+
+.header, .header_tv, .header_movie {
+  font-size: 6rem;
+  margin-bottom: 3rem;
+}
+
+.header_movie {
+  color: #618DD5;
+}
+
+.header_tv {
+  color: #C9C236;
+}
+
+.trailer_iframe_container {
+  max-width: 650px;
+  padding-top: 56.25%;
+  position: relative;
+  overflow: hidden;
+}
+
+.ytIframe {
+  position: absolute;
+  border: 0;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.no_trailers_text {
+  font-size: 2.2rem;
+}
+
+/*# sourceMappingURL=MediaTrailer.module.css.map */

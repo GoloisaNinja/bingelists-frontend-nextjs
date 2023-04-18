@@ -1,0 +1,35 @@
+@import "variables";
+
+.trailer_container {
+  margin-top: 12rem;
+  margin-bottom: 3rem;
+}
+.header {
+  font-size: 6rem;
+  margin-bottom: 3rem;
+}
+.header_movie {
+  @extend .header;
+  color: $--application-lightblue;
+}
+.header_tv {
+  @extend .header;
+  color: $--application-yellow;
+}
+.trailer_iframe_container {
+  max-width: 650px;
+  padding-top: 56.25%;
+  position: relative;
+  overflow: hidden;
+}
+.ytIframe {
+  position: absolute;
+  border: 0;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.no_trailers_text {
+  font-size: 2.2rem;
+}

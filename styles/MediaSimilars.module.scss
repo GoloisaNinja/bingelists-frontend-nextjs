@@ -1,0 +1,21 @@
+@import "variables";
+@import "mixins";
+.similars_container {
+  margin-top: 12rem;
+  >h2 {
+    font-size: 6rem;
+    margin-bottom: 3rem;
+  }
+}
+.similars_header_movie {
+  color: $--application-lightblue;
+}
+.similars_header_tv {
+  color: $--application-yellow;
+}
+.show_more_container {
+  @include show_more_container;
+}
+.btn_show_more {
+  @include btn_show_more;
+}

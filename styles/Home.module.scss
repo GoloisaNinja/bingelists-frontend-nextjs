@@ -1,0 +1,173 @@
+@import "mixins";
+@import "variables";
+// page values
+.page_container {
+    @include basicPageContainer;
+}
+// hero section
+.header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    @media (max-width: 700px) {
+        padding: 4rem 2rem;
+    }
+}
+.imgb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+    background: url("../public/images/swCompressed.webp") no-repeat center top;
+    background-size: cover;
+    mask-image: linear-gradient(#000, rgba(0,0,0,0));
+}
+.header h1 {
+    font-weight: 700;
+    font-size: 6rem;
+    margin-bottom: 2rem;
+    line-height: 1;
+    z-index: 1;
+    text-shadow: black 1px 2px 2px;
+    @media (min-width: 1000px) {
+        font-size: 8rem;
+    }
+}
+.header .brand {
+  @include brandTextHeading;
+}
+.header_overlay {
+    padding: 0 4rem;
+    margin-top: -8rem;
+    margin-bottom: 12rem;
+    @media (max-width: 700px) {
+        padding: 0 2rem;
+    }
+}
+.intro {
+    font-size: 2rem;
+    font-weight: 300;
+    text-shadow: black 1px 2px 2px;
+    z-index: 1;
+}
+// main -> call to action buttons group -> features
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 0 4rem;
+    @media (max-width: 700px) {
+        padding: 0 2rem;
+    }
+}
+.btn_group {
+    display: flex;
+    align-items: center;
+}
+.register_btn {
+    @include basicbtn($--application-blue, white);
+}
+.login_btn {
+    @include basicbtn(#c94c36, white);
+    margin-left: 3rem;
+}
+
+// features
+.features {
+    display: flex;
+    margin-top: 12rem;
+    justify-content: center;
+    align-items: center;
+    > div {
+        display: flex;
+        flex-direction: column;
+    }
+    > div:first-child {
+        margin-right: 4rem;
+        @media (max-width: 700px) {
+            margin-right: 0;
+        }
+        > h2 {
+            font-size: 5rem;
+        }
+    }
+    > div:last-child {
+        min-width: 50%;
+        min-height: 500px;
+        position: relative;
+        > img {
+            object-fit: cover;
+            mask-image: linear-gradient(#000, rgba(0,0,0,0));
+        }
+        @media (max-width: 700px) {
+            margin-top: 8rem;
+            width: 100%;
+            height: auto;
+        }
+        @media (max-width: 825px) {
+            min-width: 40%;
+        }
+    }
+    @media (max-width: 700px) {
+        flex-direction: column;
+    }
+}
+.features_lower {
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+    display: flex;
+    flex-direction: column;
+    > h2 {
+        font-size: 5rem;
+    }
+}
+.features_grid {
+    margin-top: 12rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2.4rem;
+    @media (min-width: 500px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width: 750px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (min-width: 900px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+.features_grid_card {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 2.4rem;
+    > p {
+        font-weight: 300;
+        font-size: 1.7rem;
+    }
+}
+.orange {
+    background: $--application-darktomato;
+}
+.blue {
+    background: $--application-blue;
+}
+.purple {
+    background: $--application-purple;
+}
+.darkblue {
+    background: $--application-darkblue;
+}
+
+
+// utils
+.blue_span {
+    @include colored_span($--application-lightblue);
+}
+.orange_span {
+    @include colored_span($--application-yellow);
+}

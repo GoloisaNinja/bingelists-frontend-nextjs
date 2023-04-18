@@ -1,0 +1,48 @@
+.providers_container {
+  margin-top: 12rem;
+}
+.providers_container > h2 {
+  font-size: 6rem;
+  margin-bottom: 3rem;
+}
+.providers_container > h3 {
+  font-size: 2.2rem;
+}
+.providers_container > div:nth-child(2) > h3, .providers_container div:nth-child(3) > h3 {
+  text-align: center;
+  font-size: 1.6rem;
+  max-width: 650px;
+}
+
+.watch_header_tv {
+  color: #C9C236;
+}
+
+.watch_header_movie {
+  color: #618DD5;
+}
+
+.provider_grid {
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  max-width: 650px;
+}
+@media (min-width: 385px) {
+  .provider_grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 500px) {
+  .provider_grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 635px) {
+  .provider_grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/*# sourceMappingURL=MediaProviders.module.css.map */

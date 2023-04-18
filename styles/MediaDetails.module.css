@@ -1,0 +1,81 @@
+.details_grid_movie, .details_grid_tv {
+  display: grid;
+  grid-template-areas: "title genres" "status released" "length rating" "overview overview";
+  grid-gap: 2.5rem;
+  margin-top: 6rem;
+}
+@media (min-width: 700px) {
+  .details_grid_movie, .details_grid_tv {
+    grid-template-areas: "title length genres" "status released rating" "overview overview overview";
+  }
+}
+.details_grid_movie > div:first-child, .details_grid_tv > div:first-child {
+  grid-area: title;
+}
+.details_grid_movie > div:nth-child(2), .details_grid_tv > div:nth-child(2) {
+  grid-area: status;
+}
+.details_grid_movie > div:nth-child(3), .details_grid_tv > div:nth-child(3) {
+  grid-area: released;
+}
+.details_grid_movie > div:nth-child(4), .details_grid_tv > div:nth-child(4) {
+  grid-area: length;
+}
+.details_grid_movie > div:nth-child(5), .details_grid_tv > div:nth-child(5) {
+  grid-area: rating;
+}
+.details_grid_movie > div:nth-child(6), .details_grid_tv > div:nth-child(6) {
+  grid-area: genres;
+}
+.details_grid_movie > div:nth-child(7), .details_grid_tv > div:nth-child(7) {
+  grid-area: overview;
+}
+
+.details_grid_tv {
+  grid-template-areas: "title genres" "status released" "seasons episodes" "length rating" "overview overview";
+}
+@media (min-width: 700px) {
+  .details_grid_tv {
+    grid-template-areas: "title seasons episodes" "status released length" "genres rating rating" "overview overview overview";
+  }
+}
+@media (min-width: 900px) {
+  .details_grid_tv {
+    grid-template-areas: "title seasons episodes genres" "status released length rating" "overview overview overview overview";
+  }
+}
+.details_grid_tv > div:nth-child(6) {
+  grid-area: seasons;
+}
+.details_grid_tv > div:nth-child(7) {
+  grid-area: episodes;
+}
+.details_grid_tv > div:nth-child(8) {
+  grid-area: genres;
+}
+.details_grid_tv > div:nth-child(9) {
+  grid-area: overview;
+}
+
+.detail_section {
+  display: flex;
+  flex-direction: column;
+}
+.detail_section > span {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+.detail_section > p {
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+.label_movie {
+  color: #618DD5;
+}
+
+.label_tv {
+  color: #C9C236;
+}
+
+/*# sourceMappingURL=MediaDetails.module.css.map */

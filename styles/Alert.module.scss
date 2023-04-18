@@ -1,0 +1,19 @@
+@import "variables";
+.alert {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+  padding: 10px;
+  background-color: $--application-purple;
+  color: #fff;
+  font-weight: bold;
+}
+.alert_danger {
+  @extend .alert;
+  background-color: $--application-darktomato;
+}
+.alert_success {
+  @extend .alert;
+}

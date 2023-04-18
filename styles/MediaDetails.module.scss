@@ -1,0 +1,92 @@
+@import "variables";
+@import "mixins";
+
+.details_grid_movie {
+  display: grid;
+  grid-template-areas:
+  "title genres"
+  "status released"
+  "length rating"
+  "overview overview";
+  @media (min-width: 700px) {
+    grid-template-areas:
+            "title length genres"
+            "status released rating"
+            "overview overview overview";
+  }
+  grid-gap: 2.5rem;
+  margin-top: 6rem;
+  >div:first-child {
+    grid-area: title;
+  }
+  >div:nth-child(2) {
+    grid-area: status;
+  }
+  >div:nth-child(3) {
+    grid-area: released;
+  }
+  >div:nth-child(4) {
+    grid-area: length;
+  }
+  >div:nth-child(5) {
+    grid-area: rating;
+  }
+  >div:nth-child(6) {
+    grid-area: genres;
+  }
+  >div:nth-child(7) {
+    grid-area: overview;
+  }
+}
+.details_grid_tv {
+  @extend .details_grid_movie;
+  grid-template-areas:
+  "title genres"
+  "status released"
+  "seasons episodes"
+  "length rating"
+  "overview overview";
+  @media (min-width: 700px) {
+    grid-template-areas:
+            "title seasons episodes"
+            "status released length"
+            "genres rating rating"
+            "overview overview overview";
+  }
+  @media (min-width: 900px) {
+    grid-template-areas:
+            "title seasons episodes genres"
+            "status released length rating"
+            "overview overview overview overview";
+  }
+  >div:nth-child(6) {
+    grid-area: seasons;
+  }
+  >div:nth-child(7) {
+    grid-area: episodes;
+  }
+  >div:nth-child(8) {
+    grid-area: genres;
+  }
+  >div:nth-child(9) {
+    grid-area: overview;
+  }
+}
+.detail_section {
+  display: flex;
+  flex-direction: column;
+  > span {
+    font-size: 1.6rem;
+    font-weight: 300;
+  }
+  > p {
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+}
+.label_movie {
+  color: $--application-lightblue;
+}
+.label_tv {
+  color: $--application-yellow;
+}

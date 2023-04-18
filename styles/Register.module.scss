@@ -1,0 +1,43 @@
+@import "mixins";
+@import 'variables';
+.page_container {
+  @include basicPageContainer;
+}
+.container {
+  @include basicFullPageContainer;
+}
+.bgimg {
+  @include basicFullPageBG("../public/images/lou.webp", .25)
+}
+
+.form_container {
+  @include basicFormContainer;
+}
+.form_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  > h4 {
+    font-size: 1.6rem;
+    > a {
+      color: $--application-cyan;
+    }
+  }
+}
+
+.login_form {
+  @include basicFormStyle;
+  width: 100%;
+  max-width: 500px;
+}
+.btn_submit {
+  margin-top: 4rem;
+  @include basicbtn($--application-darktomato, white);
+}
+.span_blue {
+  @include brand_span_blue;
+}
+.span_yellow {
+  @include brand_span_yellow;
+}

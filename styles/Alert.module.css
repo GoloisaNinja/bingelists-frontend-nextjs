@@ -1,0 +1,17 @@
+.alert, .alert_success, .alert_danger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+  padding: 10px;
+  background-color: #9136C9;
+  color: #fff;
+  font-weight: bold;
+}
+
+.alert_danger {
+  background-color: #c94c36;
+}
+
+/*# sourceMappingURL=Alert.module.css.map */

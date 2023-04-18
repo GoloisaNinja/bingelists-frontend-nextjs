@@ -1,0 +1,46 @@
+@import "mixins";
+@import "variables";
+.landing_container {
+  @include basicPageContainer;
+  display: flex;
+  flex-direction: column;
+}
+.grid_intro {
+  padding: 0 2rem;
+  margin-bottom: 12rem;
+  font-size: 7rem;
+  line-height: 1.1;
+  @media (min-width: 400px) {
+    font-size: 8rem;
+    padding: 0 4rem;
+  }
+  @media (min-width: 500px) {
+    font-size: 10rem;
+    padding: 0 4rem;
+  }
+}
+.btn_trending {
+  @include basicbtn($--application-yellow, black);
+  margin-left: 2rem;
+  margin-bottom: 4rem;
+  @media(min-width: 500px) {
+    margin-left: 4rem;
+  }
+}
+.see_more {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 4rem;
+  margin-bottom: 10rem;
+  > a {
+    font-size: 1.8rem;
+    text-decoration: underline;
+    margin-left: 2rem;
+  }
+}
+.blue_span {
+  @include colored_span($--application-blue);
+}
+.yellow_span {
+  @include colored_span($--application-yellow);
+}

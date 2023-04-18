@@ -1,0 +1,40 @@
+.similars_container {
+  margin-top: 12rem;
+}
+.similars_container > h2 {
+  font-size: 6rem;
+  margin-bottom: 3rem;
+}
+
+.similars_header_movie {
+  color: #618DD5;
+}
+
+.similars_header_tv {
+  color: #C9C236;
+}
+
+.show_more_container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.btn_show_more {
+  background: #C9C236;
+  color: black;
+  font-weight: 400;
+  padding: 1rem;
+  width: 100%;
+  transition: all 0.4s ease-in-out;
+}
+.btn_show_more:hover {
+  background: #a19b2b;
+}
+@media (min-width: 400px) {
+  .btn_show_more {
+    max-width: 150px;
+  }
+}
+
+/*# sourceMappingURL=MediaSimilars.module.css.map */

@@ -1,0 +1,41 @@
+@import "variables";
+@import "mixins";
+
+.cast_container {
+  margin-top: 12rem;
+  display: flex;
+  flex-direction: column;
+  > h2 {
+    font-size: 6rem;
+    margin-bottom: 3rem;
+  }
+}
+.cast_movie {
+  color: $--application-lightblue
+}
+.cast_tv {
+  color: $--application-yellow;
+}
+.cc_grid {
+  display: grid;
+  max-width: 650px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  margin-bottom: 3rem;
+  @media(min-width: 450px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media(min-width: 650px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.no_cc_header {
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+.show_more_container {
+ @include show_more_container;
+}
+.show_more {
+  @include btn_show_more;
+}

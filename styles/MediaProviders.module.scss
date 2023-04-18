@@ -1,0 +1,40 @@
+@import "variables";
+.providers_container {
+  margin-top: 12rem;
+  >h2 {
+    font-size: 6rem;
+    margin-bottom: 3rem;
+  }
+  >h3 {
+    font-size: 2.2rem;
+  }
+  >div:nth-child(2), div:nth-child(3) {
+    >h3 {
+      text-align: center;
+      font-size: 1.6rem;
+      max-width: 650px;
+    }
+  }
+}
+.watch_header_tv {
+  color: $--application-yellow;
+}
+.watch_header_movie {
+  color: $--application-lightblue;
+}
+.provider_grid {
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  max-width: 650px;
+  @media (min-width: 385px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 500px) {
+  grid-template-columns: repeat(4, 1fr);
+  }
+  @media (min-width: 635px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

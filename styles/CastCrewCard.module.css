@@ -1,0 +1,32 @@
+.card_container, .card_container_movie, .card_container_tv {
+  display: flex;
+  flex-direction: column;
+}
+
+.card_image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3;
+  margin-bottom: 1rem;
+}
+
+.card_details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.card_details > p:first-child {
+  font-weight: 300;
+  font-size: 1.2rem;
+  flex: 1;
+}
+
+.card_container_tv {
+  border-bottom: 3px solid #C9C236;
+}
+
+.card_container_movie {
+  border-bottom: 3px solid #618DD5;
+}
+
+/*# sourceMappingURL=CastCrewCard.module.css.map */

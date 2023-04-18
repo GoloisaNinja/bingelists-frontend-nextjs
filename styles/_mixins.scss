@@ -1,0 +1,115 @@
+@import "variables";
+@mixin basicPageContainer {
+  margin-top: 5rem;
+}
+@mixin brandTextHeading {
+  font-size: 10rem;
+  margin-top: 8rem;
+  margin-bottom: 22rem;
+  @media (min-width: 1000px) {
+    font-size: 12rem;
+  }
+}
+@mixin basicbtn($color, $txt-color) {
+  background: $color;
+  color: $txt-color;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: 'Prompt', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+  &:hover {
+    background: darken($color, 8%);
+  }
+}
+@mixin basicFullPageContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+}
+@mixin basicFullPageBG($bgurl, $opacity-value) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+  background: url($bgurl) center center no-repeat;
+  background-size: cover;
+  opacity: $opacity-value;
+}
+@mixin basicFormContainer {
+  padding: 2rem;
+  z-index: 2;
+  > h1 {
+    font-size: 8rem;
+    line-height: 1.2;
+    margin-bottom: 4rem;
+  }
+  > h4 {
+    font-size: 1.6rem;
+    > a {
+      color: $--application-cyan;
+    }
+  }
+}
+@mixin basicFormStyle {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 4rem 2rem;
+  margin-bottom: 2.2rem;
+  > label {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  > input {
+    border: none;
+    background: white;
+    font-size: 1.8rem;
+    padding: 1rem;
+    color: black;
+    margin-bottom: 2rem;
+  }
+}
+
+@mixin show_more_container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+@mixin btn_show_more {
+  background: $--application-yellow;
+  color: black;
+  font-weight: 400;
+  padding: 1rem;
+  width: 100%;
+  transition: all .4s ease-in-out;
+  &:hover {
+    background: darken($--application-yellow, 10%);
+  }
+  @media(min-width: 400px) {
+    max-width: 150px;
+  }
+}
+
+@mixin colored_span($color) {
+  color: $color;
+}
+@mixin brand_span_blue {
+  color: $--application-lightblue;
+}
+@mixin brand_span_yellow {
+  color: $--application-yellow
+}
