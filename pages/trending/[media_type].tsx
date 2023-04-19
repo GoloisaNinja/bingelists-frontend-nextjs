@@ -2,34 +2,24 @@ import React from "react";
 import Head from 'next/head';
 import Link from "next/link";
 import {useRouter} from "next/router";
-import useSWR from 'swr';
-import axios from "axios";
-import { useSelector } from "react-redux";
-import { authSelector } from "@/features/auth/authSlice";
 import Spinner from "@/components/spinner";
 import MediaGrid from "@/components/mediaGrid";
 import MediaCard from "@/components/mediaCard";
 import {IMediaCard} from "@/utils/mediaCardInterface";
 import styles from "../../styles/Landing.module.scss";
+import useAuthRouteForResponseOrRedirect, {ServerAuthProps} from "@/utils/useAuthRouteForResponseOrRedirect";
 
 export default function TrendingPage(): JSX.Element {
     const router = useRouter();
     const q = router.query;
     const media_type: string = q.media_type as string;
     const page: string = q.page as string;
-    const { token } = useSelector(authSelector);
-    const config = {
-        headers: {
-            "Authorization": "Bearer " + token,
-        }
+    const s:ServerAuthProps = {
+        method: "GET",
+        url: `/trending?media_type=${media_type}&page=${page}`,
+        body: {},
     }
-    const fetcher = (url: string) => axios.get(url, config).then(res => res.data);
-    const {data, error} = useSWR(`http://localhost:8080/api/v1/trending?media_type=${media_type}&page=${page}`, fetcher);
-    if (error) {
-        if (error.response.status === 403) {
-            router.push("/login").then();
-        }
-    }
+    const data:any = useAuthRouteForResponseOrRedirect(s);
     let respData: IMediaCard[] = [];
     let total_pages: number = 0;
     if (data) {
@@ -47,7 +37,6 @@ export default function TrendingPage(): JSX.Element {
             headerStyle = styles.yellow_span;
         }
     }
-
 
     return !data ? (
         <Spinner />

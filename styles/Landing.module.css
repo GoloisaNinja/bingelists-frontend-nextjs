@@ -6,9 +6,12 @@
 
 .grid_intro {
   padding: 0 2rem;
+  margin-top: 12rem;
   margin-bottom: 12rem;
   font-size: 7rem;
   line-height: 1.1;
+  z-index: 2;
+  text-shadow: 2px 2px 2px #000000;
 }
 @media (min-width: 400px) {
   .grid_intro {
@@ -21,6 +24,26 @@
     font-size: 10rem;
     padding: 0 4rem;
   }
+}
+
+.landing_hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing_hero_bgimg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+  background: url("../public/images/bl_bgimg.webp") no-repeat right top;
+  background-size: 50%;
+  mask-image: linear-gradient(#000, rgba(0, 0, 0, 0.2));
 }
 
 .btn_trending {

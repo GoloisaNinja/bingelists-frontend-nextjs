@@ -1,15 +1,10 @@
 import {useRouter} from "next/router";
 import Image, {StaticImageData} from "next/image";
-import {useSelector, useDispatch } from "react-redux";
-import {authSelector} from "@/features/auth/authSlice";
-import { setAlert, removeAlert } from "@/features/alert/alertSlice";
-import axios from "axios";
-import useSWR from "swr";
 import {IMediaResponse, IVideo} from "@/utils/mediaPageInterface";
 import {DetailProps} from "@/utils/mediaPageDetails";
 import styles from '../../styles/Media.module.scss';
-import {CreateAlert} from "@/utils/alertFactory";
 import {TMDBIMAGE_URL} from "@/constants";
+import useAuthRouteForResponseOrRedirect, {ServerAuthProps} from "@/utils/useAuthRouteForResponseOrRedirect";
 import Spinner from "@/components/spinner";
 import MediaDetails from "@/components/MediaPageComponents/mediaDetails";
 import CastCrew from "@/components/MediaPageComponents/mediaCastCrew";
@@ -18,37 +13,17 @@ import MediaTrailer from "@/components/MediaPageComponents/mediaTrailer";
 import MediaSimilars from "@/components/MediaPageComponents/mediaSimilars";
 import NoBackDrop from "@/public/images/bl_noimage_backdrop.webp"
 export default function MediaPage(): JSX.Element {
-    const dispatch = useDispatch();
     const router = useRouter();
     const q = router.query;
     const media_type: string = q.media_type as string;
     const media_id: string = q.media_id as string;
-    const { token } = useSelector(authSelector);
-    const config = {
-        headers: {
-            "Authorization": "Bearer " + token,
-        }
+    const s:ServerAuthProps = {
+        method: "GET",
+        url: `/media?media_type=${media_type}&media_id=${media_id}`,
+        body: {},
     }
-    const fetcher = (url: string) => axios.get(url, config).then(res => res.data);
-    const {data, error} = useSWR(`http://localhost:8080/api/v1/media?media_type=${media_type}&media_id=${media_id}`, fetcher);
-    if (error) {
-        console.log(error)
-        if (error.hasOwnProperty("response")) {
-            if (error.response.status === 403) {
-                router.push("/login").then(() => {
-                    const alert = CreateAlert("danger", "please authenticate");
-                    dispatch(setAlert(alert));
-                    setTimeout(() => {dispatch(removeAlert(alert.id))})
-                });
-            }
-        } else {
-            router.push("/trending/landing").then(() => {
-                const alert = CreateAlert("danger", `problem fetching media id ${media_id}!`);
-                dispatch(setAlert(alert));
-                setTimeout(() => {dispatch(removeAlert(alert.id))});
-            })
-        }
-    }
+    const data:any = useAuthRouteForResponseOrRedirect(s);
+
     let resp: IMediaResponse = {} as IMediaResponse;
 
     let detailProps: DetailProps;
