@@ -22,7 +22,7 @@ const MediaSimilars:React.FC<MediaSimilarsProps> = (props) => {
             <MediaGrid>
                 {similarsToDisplay.map((media) => <MediaCard key={media.id} details={media} />)}
             </MediaGrid>
-            {minSimilarCount === 5 && (
+            {minSimilarCount === 5 && results.length > 5 && (
                 <div className={styles.show_more_container}>
                     <button className={styles.btn_show_more} onClick={() => setMinSimilarCount(20)}>see more</button>
                 </div>

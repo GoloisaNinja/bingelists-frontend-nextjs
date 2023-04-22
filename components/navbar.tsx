@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
             <div className={styles.links_container}>
                 <Link className={styles.links} href={"/trending/landing"}>Trending</Link>
                 <Link className={styles.links} href={"/categories"}>Categories</Link>
-                <Link className={styles.links} href={"/media/search"}>Search</Link>
+                <Link className={styles.links} href={"/search"}>Search</Link>
                 <button className={styles.links} onClick={() => handleLogout()}>Logout</button>
             </div>
         </nav>

@@ -34,7 +34,8 @@ export default function Landing(): JSX.Element {
             <div className={styles.landing_container}>
                 <div className={styles.landing_hero}>
                     <div className={styles.landing_hero_bgimg}></div>
-                    <h1 className={styles.grid_intro}>Trending <span className={styles.blue_span}>Movies</span>.</h1>
+                    <h1 className={styles.grid_intro_top}>Trending</h1>
+                    <h1 className={styles.grid_intro_bottom}><span className={styles.blue_span}>Movies</span>.</h1>
                 </div>
                 <MediaGrid>
                     {movieData.map((media) => <MediaCard key={media.id} details={media} />)}

@@ -1,0 +1,64 @@
+@import "variables";
+@import "mixins";
+
+.search_page_container {
+  @include basicPageContainer;
+}
+.form_container {
+  padding: 0 2rem;
+  width: 100%;
+  > form {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    > input {
+      border: none;
+      font-size: 1.8rem;
+      padding: 1rem;
+      width: 100%;
+    }
+    > button {
+      @include basicbtn($--application-yellow, black);
+      padding: 1rem 1.2rem;
+      border-radius: 0;
+    }
+  }
+  @media (min-width: 500px) {
+    padding: 0 4rem;
+  }
+}
+.search_hero {
+  @include page_hero;
+}
+.search_bgimg {
+  @include soda_popcorn_hero;
+}
+.search_lower_container {
+  position: relative;
+}
+.search_noresult_container {
+  margin-top: 8rem;
+  padding: 0 2rem;
+  > h2 {
+    font-size: 5rem;
+  }
+  @media(min-width: 500px) {
+    padding: 0 4rem;
+  }
+}
+.search_grid_container {
+  margin-top: 8rem;
+}
+.searchresult_header {
+  padding: 0 2rem;
+  font-size: 5rem;
+  @media (min-width: 500px) {
+    padding: 0 4rem;
+  }
+}
+.blue_span {
+  @include colored_span($--application-blue);
+}
+.yellow_span {
+  @include colored_span($--application-yellow);
+}

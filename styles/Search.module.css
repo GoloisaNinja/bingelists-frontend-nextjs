@@ -1,0 +1,135 @@
+.search_page_container {
+  margin-top: 5rem;
+}
+
+.form_container {
+  padding: 0 2rem;
+  width: 100%;
+}
+.form_container > form {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+.form_container > form > input {
+  border: none;
+  font-size: 1.8rem;
+  padding: 1rem;
+  width: 100%;
+}
+.form_container > form > button {
+  background: #C9C236;
+  color: black;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  padding: 1rem 1.2rem;
+  border-radius: 0;
+}
+.form_container > form > button:hover {
+  background: #a9a32d;
+}
+@media (min-width: 500px) {
+  .form_container {
+    padding: 0 4rem;
+  }
+}
+
+.search_hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+@media (min-width: 500px) {
+  .search_hero {
+    padding: 0 4rem;
+  }
+}
+.search_hero > h1 {
+  font-size: 6rem;
+  z-index: 2;
+  line-height: 1;
+  text-shadow: 2px 2px 2px #000000;
+}
+@media (min-width: 400px) {
+  .search_hero > h1 {
+    font-size: 7rem;
+  }
+}
+@media (min-width: 465px) {
+  .search_hero > h1 {
+    font-size: 8rem;
+  }
+}
+@media (min-width: 600px) {
+  .search_hero > h1 {
+    font-size: 10rem;
+  }
+}
+.search_hero > h1:nth-child(2) {
+  margin-top: 12rem;
+}
+.search_hero > h1:last-child {
+  margin-bottom: 12rem;
+}
+
+.search_bgimg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+  background: url("../public/images/bl_bgimg.webp") no-repeat right top;
+  background-size: 50%;
+  mask-image: linear-gradient(#000, rgba(0, 0, 0, 0));
+}
+
+.search_lower_container {
+  position: relative;
+}
+
+.search_noresult_container {
+  margin-top: 8rem;
+  padding: 0 2rem;
+}
+.search_noresult_container > h2 {
+  font-size: 5rem;
+}
+@media (min-width: 500px) {
+  .search_noresult_container {
+    padding: 0 4rem;
+  }
+}
+
+.search_grid_container {
+  margin-top: 8rem;
+}
+
+.searchresult_header {
+  padding: 0 2rem;
+  font-size: 5rem;
+}
+@media (min-width: 500px) {
+  .searchresult_header {
+    padding: 0 4rem;
+  }
+}
+
+.blue_span {
+  color: #366fc9;
+}
+
+.yellow_span {
+  color: #C9C236;
+}
+
+/*# sourceMappingURL=Search.module.css.map */

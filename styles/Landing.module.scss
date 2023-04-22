@@ -7,8 +7,6 @@
 }
 .grid_intro {
   padding: 0 2rem;
-  margin-top: 12rem;
-  margin-bottom: 12rem;
   font-size: 7rem;
   line-height: 1.1;
   z-index: 2;
@@ -21,6 +19,14 @@
     font-size: 10rem;
     padding: 0 4rem;
   }
+}
+.grid_intro_top {
+  @extend .grid_intro;
+  margin-top: 12rem;
+}
+.grid_intro_bottom {
+  @extend .grid_intro;
+  margin-bottom: 12rem;
 }
 .landing_hero {
   position: relative;
@@ -38,7 +44,7 @@
   min-height: 50%;
   background: url("../public/images/bl_bgimg.webp") no-repeat right top;
   background-size: 50%;
-  mask-image: linear-gradient(#000, rgba(0,0,0,0.2));
+  mask-image: linear-gradient(#000, rgba(0,0,0,0));
 }
 .btn_trending {
   @include basicbtn($--application-yellow, black);

@@ -104,6 +104,50 @@
   }
 }
 
+@mixin page_hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  @media (min-width: 500px) {
+    padding: 0 4rem;
+  }
+  > h1 {
+    font-size: 6rem;
+    z-index: 2;
+    line-height: 1;
+    text-shadow: 2px 2px 2px #000000;
+    @media (min-width: 400px) {
+      font-size: 7rem;
+    }
+    @media (min-width: 465px) {
+      font-size: 8rem;
+    }
+    @media (min-width: 600px) {
+      font-size: 10rem;
+    }
+  }
+  > h1:nth-child(2) {
+    margin-top: 12rem;
+  }
+  > h1:last-child {
+    margin-bottom: 12rem;
+  }
+}
+@mixin soda_popcorn_hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+  background: url("../public/images/bl_bgimg.webp") no-repeat right top;
+  background-size: 50%;
+  mask-image: linear-gradient(#000, rgba(0,0,0,0));
+}
+
 @mixin colored_span($color) {
   color: $color;
 }

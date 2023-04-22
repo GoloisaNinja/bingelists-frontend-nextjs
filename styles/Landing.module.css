@@ -4,26 +4,32 @@
   flex-direction: column;
 }
 
-.grid_intro {
+.grid_intro, .grid_intro_bottom, .grid_intro_top {
   padding: 0 2rem;
-  margin-top: 12rem;
-  margin-bottom: 12rem;
   font-size: 7rem;
   line-height: 1.1;
   z-index: 2;
   text-shadow: 2px 2px 2px #000000;
 }
 @media (min-width: 400px) {
-  .grid_intro {
+  .grid_intro, .grid_intro_bottom, .grid_intro_top {
     font-size: 8rem;
     padding: 0 4rem;
   }
 }
 @media (min-width: 500px) {
-  .grid_intro {
+  .grid_intro, .grid_intro_bottom, .grid_intro_top {
     font-size: 10rem;
     padding: 0 4rem;
   }
+}
+
+.grid_intro_top {
+  margin-top: 12rem;
+}
+
+.grid_intro_bottom {
+  margin-bottom: 12rem;
 }
 
 .landing_hero {
@@ -43,7 +49,7 @@
   min-height: 50%;
   background: url("../public/images/bl_bgimg.webp") no-repeat right top;
   background-size: 50%;
-  mask-image: linear-gradient(#000, rgba(0, 0, 0, 0.2));
+  mask-image: linear-gradient(#000, rgba(0, 0, 0, 0));
 }
 
 .btn_trending {

@@ -16,33 +16,13 @@
   }
 }
 .categories_hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+ @include page_hero;
 }
 .categories_hero_bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
-  background: url("../public/images/bl_bgimg.webp") no-repeat center center;
-  background-size: auto;
-  mask-image: linear-gradient(#000, rgba(0,0,0,0.2));
+  @include soda_popcorn_hero;
 }
-.categories_hero_text {
-  margin-top: 12rem;
-  font-size: 6rem;
-  z-index: 2;
-  @media (min-width: 465px) {
-    font-size: 8rem;
-  }
-  @media (min-width: 600px) {
-    font-size: 10rem;
-  }
+.tomato_span {
+  @include colored_span(tomato);
 }
 .category_grid {
   display: grid;
@@ -62,6 +42,10 @@
   justify-content: center;
   align-items: center;
   min-height: 100px;
+  transition: all .4s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 .category_btn {
   position: absolute;
@@ -81,10 +65,16 @@
 .category_card_movie {
   @extend .category_card;
   background: $--application-blue;
+  &:hover {
+    background: lighten($--application-blue, 10%);
+  }
 }
 .category_card_tv {
   @extend .category_card;
   background: $--application-yellow;
+  &:hover {
+    background: lighten($--application-yellow, 20%);
+  }
   > button {
     >h3 {
       text-shadow: none;

@@ -20,11 +20,12 @@ export default function CategoriesPage():JSX.Element {
 
     return !data ? (<Spinner />) : (
         <div className={styles.categories_page_container}>
+            <div className={styles.categories_hero}>
+                <div className={styles.categories_hero_bg}></div>
+                <h1 className={styles.categories_hero_text}>Binge</h1>
+                <h1><span className={styles.tomato_span}>Categories</span>.</h1>
+            </div>
             <div className={styles.categories_container}>
-                <div className={styles.categories_hero}>
-                    <div className={styles.categories_hero_bg}></div>
-                    <h1 className={styles.categories_hero_text}>Categories</h1>
-                </div>
                 <h2><span className={styles.blue_span}>Movie</span> Categories</h2>
                 <div className={styles.category_grid}>
                     {mCats.map((cat) => (
