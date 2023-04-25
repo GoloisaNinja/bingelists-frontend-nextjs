@@ -69,6 +69,7 @@ export default function Login(): JSX.Element {
                                 <label>Email</label>
                                 <input type={"email"}
                                        name={"email"}
+                                       autoFocus={true}
                                        autoComplete={"email-address"}
                                        value={email}
                                        onChange={(e) => handleInput(e)}

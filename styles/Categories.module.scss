@@ -3,18 +3,21 @@
 .categories_page_container {
   @include basicPageContainer;
 }
+
+.categories_movies_header {
+  @include basicHeader;
+  margin-top: 0;
+}
+.categories_tv_header {
+  @include basicHeader;
+}
 .categories_container {
   padding: 0 2rem;
-  >h2 {
-    margin-top: 8rem;
-    margin-bottom: 3rem;
-    font-size: 5rem;
-    line-height: 1;
-  }
   @media(min-width: 500px) {
     padding: 0 4rem;
   }
 }
+
 .categories_hero {
  @include page_hero;
 }

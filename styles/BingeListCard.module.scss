@@ -1,0 +1,48 @@
+@import "variables";
+@import "mixins";
+
+.card_container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background: $--application-darkblue;
+  border-bottom: 5px solid $--application-darktomato;
+}
+.list_icon {
+  font-family: monospace;
+  font-size: 3rem;
+  font-weight: 800;
+  padding: .8rem 1.8rem;
+  border-radius: 50%;
+  width: fit-content;
+  background: $--application-darktomato;
+  margin-bottom: 3rem;
+}
+.list_name {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+.is_owner, .shared_with_count, .media_count {
+  font-size: 2.2rem;
+}
+.media_count {
+  flex: 1;
+}
+.card_bottom_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  > button {
+    > svg {
+      font-size: 1.6rem;
+      color: tomato;
+    }
+  }
+}
+.created {
+  font-size: 1.2rem;
+  //margin-top: 2rem;
+  //margin-left: auto;
+}

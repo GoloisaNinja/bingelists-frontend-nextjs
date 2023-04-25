@@ -22,7 +22,7 @@ export default function MediaPage(): JSX.Element {
         url: `/media?media_type=${media_type}&media_id=${media_id}`,
         body: {},
     }
-    const data:any = useAuthRouteForResponseOrRedirect(s);
+    const {data, isLoading }:any = useAuthRouteForResponseOrRedirect(s);
 
     let resp: IMediaResponse = {} as IMediaResponse;
 
@@ -89,7 +89,7 @@ export default function MediaPage(): JSX.Element {
         setMediaDetailValuesBasedOnMediaType();
         trailer = getOfficialYouTubeTrailerFromVideos();
     }
-    return Object.keys(resp).length ? (
+    return !isLoading ? (
         <div className={styles.page_container}>
             <div className={styles.bg_container}>
                 <Image src={backdropImgSrc} alt={`backdrop image for ${media_title}`} fill={true} sizes={"100vw"}/>

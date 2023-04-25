@@ -2,14 +2,23 @@
   margin-top: 5rem;
 }
 
-.categories_container {
-  padding: 0 2rem;
-}
-.categories_container > h2 {
+.categories_movies_header {
   margin-top: 8rem;
   margin-bottom: 3rem;
   font-size: 5rem;
   line-height: 1;
+  margin-top: 0;
+}
+
+.categories_tv_header {
+  margin-top: 8rem;
+  margin-bottom: 3rem;
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.categories_container {
+  padding: 0 2rem;
 }
 @media (min-width: 500px) {
   .categories_container {

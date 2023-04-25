@@ -1,0 +1,69 @@
+@import "variables";
+@import "mixins";
+
+.page_container {
+  @include basicPageContainer;
+}
+.bingelists_hero {
+  @include page_hero;
+}
+.bingelists_hero_img {
+  @include soda_popcorn_hero;
+}
+.bingelists_create {
+  padding: 0 2rem;
+  >button:first-child {
+    @include basicbtn($--application-purple, white);
+    margin-bottom: 2rem;
+  }
+}
+.bingelists_nl_form_container {
+  height: 0;
+  overflow: hidden;
+  > form {
+    display: flex;
+    flex-direction: column;
+    > label {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    > div {
+      display: flex;
+      align-items: stretch;
+      > input {
+        border: none;
+        font-size: 1.8rem;
+        padding: 1rem;
+        width: 100%;
+      }
+      >button {
+        @include basicbtn($--application-yellow, black);
+        padding: 1rem 1.2rem;
+        border-radius: 0;
+      }
+    }
+  }
+  transition: all .4s ease-in-out;
+  &.isActive {
+    height: 85px;
+  }
+}
+.bingelist_card_grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+  padding: 0 2rem;
+  margin-top: 8rem;
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 850px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.cyan_span {
+  @include colored_span($--application-cyan);
+}

@@ -14,7 +14,7 @@ export default function Landing(): JSX.Element {
         url: "/trending/landing",
         body: {},
     }
-    const data: any = useAuthRouteForResponseOrRedirect(s);
+    const {data, isLoading}: any = useAuthRouteForResponseOrRedirect(s);
 
     let tvData: IMediaCard[] = [];
     let movieData: IMediaCard[] = [];
@@ -23,7 +23,7 @@ export default function Landing(): JSX.Element {
         movieData = data.movie.results;
     }
 
-    return !data ? (
+    return isLoading ? (
         <Spinner />
     ) : (
         <>
@@ -34,16 +34,17 @@ export default function Landing(): JSX.Element {
             <div className={styles.landing_container}>
                 <div className={styles.landing_hero}>
                     <div className={styles.landing_hero_bgimg}></div>
-                    <h1 className={styles.grid_intro_top}>Trending</h1>
-                    <h1 className={styles.grid_intro_bottom}><span className={styles.blue_span}>Movies</span>.</h1>
+                    <h1>Everything</h1>
+                    <h1>Trendy.</h1>
                 </div>
+                <h2 className={styles.grid_intro}>The Biggest <span className={styles.blue_span}>Movies</span>.</h2>
                 <MediaGrid>
                     {movieData.map((media) => <MediaCard key={media.id} details={media} />)}
                 </MediaGrid>
                 <div className={styles.see_more}>
                     <Link href={"/trending/movie?page=2"}><span className={styles.blue_span}>Explore</span> Movies.</Link>
                 </div>
-                <h1 className={styles.grid_intro}>Trending <span className={styles.yellow_span}>Tv</span>.</h1>
+                <h2 className={styles.grid_intro}>The Hottest <span className={styles.yellow_span}>Tv</span>.</h2>
                 <MediaGrid>
                     {tvData.map((media) => <MediaCard key={media.id} details={media}/>)}
                 </MediaGrid>

@@ -10,7 +10,7 @@ export default function CategoriesPage():JSX.Element {
         url: "/category/list",
         body: {},
     }
-    const data: any = useAuthRouteForResponseOrRedirect(s);
+    const {data, isLoading }: any = useAuthRouteForResponseOrRedirect(s);
     let mCats:IGenre[] = [];
     let tCats:IGenre[] = [];
     if (data) {
@@ -18,15 +18,15 @@ export default function CategoriesPage():JSX.Element {
         tCats = data.tv.genres;
     }
 
-    return !data ? (<Spinner />) : (
+    return isLoading ? (<Spinner />) : (
         <div className={styles.categories_page_container}>
             <div className={styles.categories_hero}>
                 <div className={styles.categories_hero_bg}></div>
                 <h1 className={styles.categories_hero_text}>Binge</h1>
-                <h1><span className={styles.tomato_span}>Categories</span>.</h1>
+                <h1>Categories.</h1>
             </div>
             <div className={styles.categories_container}>
-                <h2><span className={styles.blue_span}>Movie</span> Categories</h2>
+                <h2 className={styles.categories_movies_header}><span className={styles.blue_span}>Movie</span> Categories</h2>
                 <div className={styles.category_grid}>
                     {mCats.map((cat) => (
                         <div className={styles.category_card_movie} key={cat.id}>
@@ -36,7 +36,7 @@ export default function CategoriesPage():JSX.Element {
                         </div>
                     ))}
                 </div>
-                <h2><span className={styles.yellow_span}>Tv</span> Categories</h2>
+                <h2 className={styles.categories_tv_header}><span className={styles.yellow_span}>Tv</span> Categories</h2>
                 <div className={styles.category_grid}>
                     {tCats.map((cat) => (
                         <div className={styles.category_card_tv} key={cat.id}>

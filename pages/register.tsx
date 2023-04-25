@@ -16,7 +16,8 @@ export default function Register(): JSX.Element {
                         <div className={styles.form_wrapper}>
                             <form className={styles.login_form}>
                                 <label>Email</label>
-                                <input type={"email"} name={"email"}></input>
+                                <input type={"email"} name={"email"}
+                                autoFocus={true}></input>
                                 <label>Password</label>
                                 <input type={"text"} name={"password"}></input>
                                 <label>Confirm Password</label>

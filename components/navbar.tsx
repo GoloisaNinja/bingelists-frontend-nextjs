@@ -73,8 +73,12 @@ const Navbar: React.FC = () => {
             <div className={styles.links_container}>
                 <Link className={styles.links} href={"/trending/landing"}>Trending</Link>
                 <Link className={styles.links} href={"/categories"}>Categories</Link>
+                <Link className={styles.links} href={"/lists"}>Lists</Link>
                 <Link className={styles.links} href={"/search"}>Search</Link>
                 <button className={styles.links} onClick={() => handleLogout()}>Logout</button>
+                <Link className={styles.profile_link} href={"/trending/landing"}>
+                    {auth.name.split("")[0].toUpperCase()}
+                </Link>
             </div>
         </nav>
     );

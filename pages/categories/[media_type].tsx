@@ -23,7 +23,7 @@ export default function CategoryGenrePage():JSX.Element {
         url: `/category?media_type=${mt}&genre=${g}&page=${p}`,
         body: {},
     }
-    const data:any = useAuthRouteForResponseOrRedirect(s);
+    const {data, isLoading }:any = useAuthRouteForResponseOrRedirect(s);
     let res:IMediaCard[] = [];
     let totalPages: number = 0;
     if (data) {
@@ -41,17 +41,20 @@ export default function CategoryGenrePage():JSX.Element {
             headerStyle = styles.yellow_span;
         }
     }
-    return data ? (
+    return !isLoading ? (
         <>
             <Head>
                 <title>{`Binge Lists | Category genre ${cn} - ${mt} results page ${p}`}</title>
                 <meta name={"description"} content={"Browse Categories for movies and tv on the Binge List app"} />
             </Head>
             <div className={styles.landing_container}>
-                <h1 className={styles.grid_intro}>{`${headerText}`} <span className={headerStyle}>{`Page ${p}`}</span>.</h1>
-                <Link href={"/categories"}>
-                    <button className={styles.btn_trending}>Back To Categories</button>
-                </Link>
+                <div className={styles.hero_intro_container}>
+                    <h1>{`${headerText}`}</h1>
+                    <h1><span className={headerStyle}>{`Page ${p}`}</span>.</h1>
+                    <Link href={"/categories"}>
+                        <button className={styles.btn_trending_clean}>Back To Categories</button>
+                    </Link>
+                </div>
                 <MediaGrid>
                     {res.map((media) => {
                         media.media_type = mt;

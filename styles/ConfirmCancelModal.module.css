@@ -1,0 +1,57 @@
+.modal_container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #132748;
+  z-index: 1001;
+  padding: 2rem;
+  max-width: 450px;
+  border-bottom: 5px solid #c94c36;
+}
+.modal_container > h4 {
+  font-size: 2.2rem;
+  margin-bottom: 5rem;
+}
+
+.modal_btn_container {
+  display: flex;
+  align-items: stretch;
+}
+.modal_btn_container > button:first-child {
+  background: #366fc9;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  border-radius: 0;
+  margin-right: 3rem;
+}
+.modal_btn_container > button:first-child:hover {
+  background: #2d5da9;
+}
+.modal_btn_container > button:last-child {
+  background: #c94c36;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  border-radius: 0;
+}
+.modal_btn_container > button:last-child:hover {
+  background: #a9402d;
+}
+
+/*# sourceMappingURL=ConfirmCancelModal.module.css.map */

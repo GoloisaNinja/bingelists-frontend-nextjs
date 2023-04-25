@@ -52,7 +52,13 @@
     font-size: 1.6rem;
     font-weight: 500;
   }
-
+.profile_link {
+  font-family: monospace;
+  font-weight: 700;
+  background: $--application-purple;
+  border-radius: 50%;
+  padding: .8rem 1.4rem;
+}
   @media (max-width: 600px) {
     display: none;
   }

@@ -19,7 +19,7 @@ export default function TrendingPage(): JSX.Element {
         url: `/trending?media_type=${media_type}&page=${page}`,
         body: {},
     }
-    const data:any = useAuthRouteForResponseOrRedirect(s);
+    const {data, isLoading}:any = useAuthRouteForResponseOrRedirect(s);
     let respData: IMediaCard[] = [];
     let total_pages: number = 0;
     if (data) {
@@ -38,7 +38,7 @@ export default function TrendingPage(): JSX.Element {
         }
     }
 
-    return !data ? (
+    return isLoading ? (
         <Spinner />
     ) : (
         <>
@@ -47,10 +47,13 @@ export default function TrendingPage(): JSX.Element {
                 <meta name={"description"} content={"Browse Trending movies and tv on the Binge List app"} />
             </Head>
             <div className={styles.landing_container}>
-                <h1 className={styles.grid_intro}>{`${headerText}`} <span className={headerStyle}>{`Page ${page}`}</span>.</h1>
-                <Link href={"/trending/landing"}>
-                    <button className={styles.btn_trending}>Back To Trending</button>
-                </Link>
+                <div className={styles.hero_intro_container}>
+                    <h1>{`${headerText}`}</h1>
+                    <h1><span className={headerStyle}>{`Page ${page}`}</span>.</h1>
+                    <Link href={"/trending/landing"}>
+                        <button className={styles.btn_trending_clean}>Back To Trending</button>
+                    </Link>
+                </div>
                 <MediaGrid>
                     {respData.map((media) => <MediaCard key={media.id} details={media} />)}
                 </MediaGrid>

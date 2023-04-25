@@ -5,18 +5,20 @@
   display: flex;
   flex-direction: column;
 }
+.hero_intro_container {
+  @include page_hero_nobg;
+}
+.landing_hero {
+  @include page_hero;
+}
+.landing_hero_bgimg {
+  @include soda_popcorn_hero;
+}
 .grid_intro {
+  @include basicHeader;
+  margin: 0;
   padding: 0 2rem;
-  font-size: 7rem;
-  line-height: 1.1;
-  z-index: 2;
-  text-shadow: 2px 2px 2px #000000;
-  @media (min-width: 400px) {
-    font-size: 8rem;
-    padding: 0 4rem;
-  }
   @media (min-width: 500px) {
-    font-size: 10rem;
     padding: 0 4rem;
   }
 }
@@ -28,24 +30,7 @@
   @extend .grid_intro;
   margin-bottom: 12rem;
 }
-.landing_hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-.landing_hero_bgimg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
-  background: url("../public/images/bl_bgimg.webp") no-repeat right top;
-  background-size: 50%;
-  mask-image: linear-gradient(#000, rgba(0,0,0,0));
-}
+
 .btn_trending {
   @include basicbtn($--application-yellow, black);
   margin-left: 2rem;
@@ -53,6 +38,10 @@
   @media(min-width: 500px) {
     margin-left: 4rem;
   }
+}
+.btn_trending_clean {
+  @extend .btn_trending;
+  margin-left: 0;
 }
 .see_more {
   display: flex;
@@ -64,6 +53,9 @@
     text-decoration: underline;
     margin-left: 2rem;
   }
+}
+.purple_span {
+  @include colored_span($--application-purple);
 }
 .blue_span {
   @include colored_span($--application-blue);

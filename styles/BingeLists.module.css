@@ -1,0 +1,149 @@
+.page_container {
+  margin-top: 5rem;
+}
+
+.bingelists_hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+@media (min-width: 500px) {
+  .bingelists_hero {
+    padding: 0 4rem;
+  }
+}
+.bingelists_hero > h1 {
+  font-size: 6rem;
+  z-index: 2;
+  line-height: 1;
+  text-shadow: 2px 2px 2px #000000;
+}
+@media (min-width: 400px) {
+  .bingelists_hero > h1 {
+    font-size: 7rem;
+  }
+}
+@media (min-width: 465px) {
+  .bingelists_hero > h1 {
+    font-size: 8rem;
+  }
+}
+@media (min-width: 600px) {
+  .bingelists_hero > h1 {
+    font-size: 10rem;
+  }
+}
+.bingelists_hero > h1:nth-child(2) {
+  margin-top: 12rem;
+}
+.bingelists_hero > h1:last-child {
+  margin-bottom: 12rem;
+}
+
+.bingelists_hero_img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+  background: url("../public/images/bl_bgimg.webp") no-repeat right top;
+  background-size: 50%;
+  mask-image: linear-gradient(#000, rgba(0, 0, 0, 0));
+}
+
+.bingelists_create {
+  padding: 0 2rem;
+}
+.bingelists_create > button:first-child {
+  background: #9136C9;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  margin-bottom: 2rem;
+}
+.bingelists_create > button:first-child:hover {
+  background: #7a2da9;
+}
+
+.bingelists_nl_form_container {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+}
+.bingelists_nl_form_container > form {
+  display: flex;
+  flex-direction: column;
+}
+.bingelists_nl_form_container > form > label {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+.bingelists_nl_form_container > form > div {
+  display: flex;
+  align-items: stretch;
+}
+.bingelists_nl_form_container > form > div > input {
+  border: none;
+  font-size: 1.8rem;
+  padding: 1rem;
+  width: 100%;
+}
+.bingelists_nl_form_container > form > div > button {
+  background: #C9C236;
+  color: black;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  padding: 1rem 1.2rem;
+  border-radius: 0;
+}
+.bingelists_nl_form_container > form > div > button:hover {
+  background: #a9a32d;
+}
+.bingelists_nl_form_container.isActive {
+  height: 85px;
+}
+
+.bingelist_card_grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+  padding: 0 2rem;
+  margin-top: 8rem;
+}
+@media (min-width: 600px) {
+  .bingelist_card_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 850px) {
+  .bingelist_card_grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .bingelist_card_grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cyan_span {
+  color: #36C9C2;
+}
+
+/*# sourceMappingURL=BingeLists.module.css.map */
