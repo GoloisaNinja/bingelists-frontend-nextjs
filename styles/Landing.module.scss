@@ -1,5 +1,8 @@
 @import "mixins";
 @import "variables";
+.main_div {
+  position: relative;
+}
 .landing_container {
   @include basicPageContainer;
   display: flex;

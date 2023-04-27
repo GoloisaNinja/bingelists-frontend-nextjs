@@ -3,8 +3,7 @@ import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {authSelector, logout} from "@/features/auth/authSlice";
-import {setAlert, removeAlert} from "@/features/alert/alertSlice";
-import {CreateAlert} from "@/utils/alertFactory";
+import {useDispatchAlert} from "@/utils/alertFactory";
 import useSWR from "swr";
 import {BINGE_DEVAPI_BASE_URL} from "@/constants";
 
@@ -17,6 +16,7 @@ export interface ServerAuthProps {
 const useAuthRouteForResponseOrRedirect:React.FC<ServerAuthProps> = (props):any => {
     const router = useRouter();
     const dispatch = useDispatch();
+    const { dispatchAlert } = useDispatchAlert();
     const { token, isAuthenticated } = useSelector(authSelector);
     const fetcher = (url: string) => axios({
         method: props.method,
@@ -28,27 +28,19 @@ const useAuthRouteForResponseOrRedirect:React.FC<ServerAuthProps> = (props):any 
         if (error.hasOwnProperty("response")) {
             if (error.response.status === 403) {
                 router.push("/login").then(() => {
-                    const alert = CreateAlert("danger", "please authenticate");
                     if (isAuthenticated) {
                         dispatch(logout());
                     }
-                    dispatch(setAlert(alert));
-                    setTimeout(() => {dispatch(removeAlert(alert.id))},5000)
+                    dispatchAlert("danger", "please authenticate");
                 });
             }
         }  else {
-            router.push("/login").then(() => {
-                const alert = CreateAlert("danger", "server error - please try later");
-                if (isAuthenticated) {
-                    dispatch(logout());
-                }
-                dispatch(setAlert(alert));
-                setTimeout(() => {dispatch(removeAlert(alert.id))},5000)
-            });
+            router.back();
+            dispatchAlert("danger", "something went wrong!");
         }
         return {
             data: null,
-            isLoading: true,
+            isLoading: false,
         };
     }
     return {

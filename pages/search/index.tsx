@@ -1,10 +1,9 @@
 import {FormEvent, useState, useEffect} from 'react';
 import {useRouter} from "next/router";
-import {useDispatch, useSelector} from "react-redux";
-import {removeAlert, setAlert} from "@/features/alert/alertSlice";
+import {useSelector} from "react-redux";
 import {authSelector} from "@/features/auth/authSlice";
 import {IMediaCard} from "@/utils/mediaCardInterface";
-import {CreateAlert} from "@/utils/alertFactory";
+import {useDispatchAlert} from "@/utils/alertFactory";
 import axios from "axios";
 import {API_HEADER, BINGE_DEVAPI_BASE_URL} from "@/constants";
 import styles from "@/styles/Search.module.scss";
@@ -14,13 +13,13 @@ import {nanoid} from "nanoid";
 import Spinner from "@/components/spinner";
 
 export default function SearchPage(): JSX.Element {
+    const {dispatchAlert} = useDispatchAlert();
     const router = useRouter();
     const {query} = router.query
     let querystring: string = "";
     if (typeof query === "string") {
         querystring = query;
     }
-    const dispatch = useDispatch();
     const {token} = useSelector(authSelector);
     const [titleSearch, setTitleSearch] = useState<string>(querystring);
     const [movieSearchResults, setMovieSearchResults] = useState<IMediaCard[]>([]);
@@ -42,11 +41,7 @@ export default function SearchPage(): JSX.Element {
             setTvSearchResults(res.data.tv.results);
             setTitleSearch("");
         } catch (e: any) {
-            const alert = CreateAlert("danger", "something went wrong");
-            dispatch(setAlert(alert));
-            setTimeout(() => {
-                dispatch(removeAlert(alert.id))
-            }, 5000)
+            dispatchAlert("danger", "something went wrong!");
         }
         setLoading(false);
     }

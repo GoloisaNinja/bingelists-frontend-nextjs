@@ -1,10 +1,9 @@
 import {FormEvent, useState} from 'react';
 import axios from 'axios';
 import {API_HEADER, BINGE_DEVAPI_BASE_URL} from "@/constants";
-import {useSelector, useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 import {authSelector} from "@/features/auth/authSlice";
-import {setAlert, removeAlert} from "@/features/alert/alertSlice";
-import {CreateAlert} from "@/utils/alertFactory";
+import {useDispatchAlert} from "@/utils/alertFactory";
 import useAuthRouteForResponseOrRedirect, {ServerAuthProps} from "@/utils/useAuthRouteForResponseOrRedirect";
 import Spinner from "@/components/spinner";
 import {IBingeListCard} from "@/utils/bingeListInterface";
@@ -14,7 +13,7 @@ import ModalWrapper from "@/components/modalWrapper";
 import ConfirmCancelModal from "@/components/confirmCancelModal";
 export default function BingeLists():JSX.Element {
     const { token } = useSelector(authSelector);
-    const dispatch = useDispatch();
+    const { dispatchAlert } = useDispatchAlert();
     const [createNew, setCreateNew] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [modalActionType, setModalActionType] = useState<string>("CREATE");
@@ -43,11 +42,6 @@ export default function BingeLists():JSX.Element {
             newListContainer.classList.add(isActiveClass);
         }
     }
-    const alertDispatchFactory = (type:string, message:string) => {
-        const alert = CreateAlert(type, message);
-        dispatch(setAlert(alert));
-        setTimeout(() => {dispatch(removeAlert(alert.id))}, 5000);
-    }
     const listCreateControlFlow = async (decision: boolean) => {
         if (decision) {
             const url = BINGE_DEVAPI_BASE_URL + "/bingelist/create";
@@ -57,17 +51,17 @@ export default function BingeLists():JSX.Element {
             try {
                 const res = await axios.post(url, body, API_HEADER);
                 if (res.status === 200) {
-                    alertDispatchFactory("success", "list created successfully!");
+                    dispatchAlert("success", "list created successfully!");
                     setListName("");
                     mutate();
                 } else {
-                    alertDispatchFactory("danger", "bad request!")
+                    dispatchAlert("danger", "bad request!");
                 }
             } catch(e:any) {
-                alertDispatchFactory("danger", "something went wrong!");
+                dispatchAlert("danger", "something went wrong!");
             }
         } else {
-            alertDispatchFactory("danger", "list creation was cancelled...");
+            dispatchAlert("danger", "list creation was cancelled!");
         }
         setCreateNew(!createNew);
         setShowModal(false);
@@ -78,17 +72,17 @@ export default function BingeLists():JSX.Element {
             try {
                 const res = await axios.delete(url, API_HEADER);
                 if (res.status === 200) {
-                    alertDispatchFactory("success", "list deleted successfully!");
+                    dispatchAlert("success", "list deleted successfully!");
                     setListId("");
                     mutate();
                 } else {
-                    alertDispatchFactory("danger", "bad request");
+                    dispatchAlert("danger", "bad request");
                 }
             } catch(e:any) {
-                alertDispatchFactory("danger", "something went wrong!");
+                dispatchAlert("danger", "something went wrong!");
             }
         } else {
-            alertDispatchFactory("danger", "list deletion was cancelled...");
+            dispatchAlert("danger", "list deletion was cancelled!");
         }
         setShowModal(false);
     }
@@ -111,11 +105,7 @@ export default function BingeLists():JSX.Element {
         setModalActionType("CREATE");
         setShowModal(true);
     }
-    return isLoading ? (<Spinner />) : showModal ? (
-        <ModalWrapper>
-            <ConfirmCancelModal message={modalMessage} handleModalDecision={handleModalDecision} />
-        </ModalWrapper>
-        ) : (
+    return isLoading ? (<Spinner />) : (
         <>
             <div className={styles.page_container}>
                 <div className={styles.bingelists_hero}>
@@ -144,6 +134,9 @@ export default function BingeLists():JSX.Element {
                     {lists.map((list:IBingeListCard) => <BingeListCard key={list.id} data={list} delete={handleDelete}/>)}
                 </div>
             </div>
+            {showModal && <ModalWrapper>
+                <ConfirmCancelModal message={modalMessage} handleModalDecision={handleModalDecision} />
+            </ModalWrapper>}
         </>
     );
 }

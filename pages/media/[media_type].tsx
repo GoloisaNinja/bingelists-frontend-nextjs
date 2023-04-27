@@ -7,6 +7,7 @@ import {TMDBIMAGE_URL} from "@/constants";
 import useAuthRouteForResponseOrRedirect, {ServerAuthProps} from "@/utils/useAuthRouteForResponseOrRedirect";
 import Spinner from "@/components/spinner";
 import MediaDetails from "@/components/MediaPageComponents/mediaDetails";
+import ProfileActions from "@/components/MediaPageComponents/profileActions";
 import CastCrew from "@/components/MediaPageComponents/mediaCastCrew";
 import MediaProviders from "@/components/MediaPageComponents/mediaProviders";
 import MediaTrailer from "@/components/MediaPageComponents/mediaTrailer";
@@ -17,6 +18,7 @@ export default function MediaPage(): JSX.Element {
     const q = router.query;
     const media_type: string = q.media_type as string;
     const media_id: string = q.media_id as string;
+
     const s:ServerAuthProps = {
         method: "GET",
         url: `/media?media_type=${media_type}&media_id=${media_id}`,
@@ -102,6 +104,7 @@ export default function MediaPage(): JSX.Element {
                     <h1>{resp.media.tagline}</h1>
                 </div>
                 <MediaDetails data={detailProps!} />
+                <ProfileActions media_id={media_id} media_type={media_type} />
                 <CastCrew data={resp.credits} type={media_type}/>
                 <MediaProviders data={resp.providers} type={media_type}/>
                 <MediaTrailer data={trailer} type={media_type} />

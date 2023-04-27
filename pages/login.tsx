@@ -5,13 +5,14 @@ import {useRouter} from "next/router";
 import axios, {AxiosResponse} from "axios";
 import { useDispatch } from "react-redux";
 import { authenticate, User } from "@/features/auth/authSlice";
+import {loadMinifiedBingeLists} from "@/features/binge/bingeSlice";
 import styles from '@/styles/Login.module.scss';
-import {BINGE_DEVAPI_BASE_URL} from "@/constants";
-import {CreateAlert} from "@/utils/alertFactory";
-import {removeAlert, setAlert} from "@/features/alert/alertSlice";
+import {BINGE_DEVAPI_BASE_URL, API_HEADER} from "@/constants";
+import {useDispatchAlert} from "@/utils/alertFactory";
 
 export default function Login(): JSX.Element {
     const dispatch = useDispatch();
+    const { dispatchAlert } = useDispatchAlert();
     const router = useRouter();
     type FormData = {
         email: string,
@@ -27,6 +28,18 @@ export default function Login(): JSX.Element {
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({...formData, [e.target.name]: e.target.value});
     }
+    const loadBingeListsIntoState = async (token: string) => {
+        const url:string = BINGE_DEVAPI_BASE_URL + "/bingelist/lists/minified";
+        API_HEADER.headers.Authorization = "Bearer " + token;
+        try {
+            const res = await axios.get(url, API_HEADER);
+            if (res.status === 200) {
+                dispatch(loadMinifiedBingeLists(res.data));
+            }
+        } catch(e: any) {
+            dispatchAlert("danger", "bingelists failed to fetch!");
+        }
+    }
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const config = {
@@ -38,18 +51,14 @@ export default function Login(): JSX.Element {
         try {
             const resp: AxiosResponse<User> = await axios.post(BINGE_DEVAPI_BASE_URL + "/auth/new/authenticate", body, config);
             if (resp.status === 200) {
-                dispatch(authenticate(resp.data))
+                dispatch(authenticate(resp.data));
+                await loadBingeListsIntoState(resp.data.token);
                 router.push("/trending/landing").then(() => {
-                    const alert = CreateAlert("success", "logged in!")
-                    dispatch(setAlert(alert));
-                    setTimeout(() => {dispatch(removeAlert(alert.id))}, 5000);
+                    dispatchAlert("success", "logged in!");
                 });
             }
         } catch(e: any) {
-            console.log(e.message)
-            const alert = CreateAlert("danger", e.message);
-            dispatch(setAlert(alert));
-            setTimeout(() => {dispatch(removeAlert(alert.id))}, 5000);
+            dispatchAlert("danger", e.message);
         }
 
     }

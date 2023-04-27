@@ -4,14 +4,14 @@ import axios from "axios";
 import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import {authSelector, logout} from "@/features/auth/authSlice";
-import {removeAlert, setAlert} from "@/features/alert/alertSlice";
-import {CreateAlert} from "@/utils/alertFactory";
+import {useDispatchAlert} from "@/utils/alertFactory";
 import {API_HEADER, BINGE_DEVAPI_BASE_URL} from "@/constants";
 import styles from "../styles/Navbar.module.scss";
 
 const Navbar: React.FC = () => {
     const router = useRouter();
     const dispatch = useDispatch();
+    const {dispatchAlert} = useDispatchAlert();
     const auth = useSelector(authSelector);
     const handleHamburger = () => {
         const hamburger = document.getElementById("hamburger")!;
@@ -26,19 +26,15 @@ const Navbar: React.FC = () => {
         try {
             const resp = await axios.post(BINGE_DEVAPI_BASE_URL + "/auth/logout", API_HEADER);
             if (resp.status === 200) {
-                const alert = CreateAlert("success", "come back soon!");
                 dispatch(logout());
                 router.push("/login").then(() => {
-                    dispatch(setAlert(alert));
-                    setTimeout(() => {dispatch(removeAlert(alert.id))}, 5000)
+                    dispatchAlert("success", "come back soon!");
                 })
             }
         } catch(e: any) {
-            const alert = CreateAlert("danger", e.message + "...forced logout");
             dispatch(logout());
             router.push("/login").then(() => {
-                dispatch(setAlert(alert))
-                setTimeout(() => {dispatch(removeAlert(alert.id))}, 5000)
+                dispatchAlert("danger", "logged out...with issues...")
             })
         }
 
