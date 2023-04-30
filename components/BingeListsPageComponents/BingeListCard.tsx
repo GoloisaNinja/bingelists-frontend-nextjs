@@ -27,9 +27,11 @@ const BingeListCard:React.FC<BingeListCardProps> = (props) => {
             <p className={styles.shared_with_count}>Shared Count: {listUsers.length}</p>
             <p className={styles.media_count}>Total Items: {mediaCount}</p>
             <div className={styles.card_bottom_container}>
-                <button onClick={() => handleDelete()}>
-                    <FaTrashAlt />
-                </button>
+                {isOwner && (
+                    <button onClick={() => handleDelete()}>
+                        <FaTrashAlt />
+                    </button>
+                )}
                 <p className={styles.created}>{createdAt}</p>
             </div>
         </div>

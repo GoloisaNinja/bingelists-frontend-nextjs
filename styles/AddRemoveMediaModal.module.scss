@@ -1,0 +1,20 @@
+@import "variables";
+@import "mixins";
+.modal_container {
+  @include basicModalContainer;
+  min-width: 350px;
+  > label {
+    font-size: 2.2rem;
+    margin-bottom: 4rem;
+  }
+  > select {
+    border: none;
+    font-size: 1.6rem;
+    padding: 1rem;
+    margin-bottom: 4rem;
+    cursor: pointer;
+  }
+}
+.btn_container {
+  @include basicModalBtnGroupContainer;
+}

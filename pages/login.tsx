@@ -5,13 +5,14 @@ import {useRouter} from "next/router";
 import axios, {AxiosResponse} from "axios";
 import { useDispatch } from "react-redux";
 import { authenticate, User } from "@/features/auth/authSlice";
-import {loadMinifiedBingeLists} from "@/features/binge/bingeSlice";
 import styles from '@/styles/Login.module.scss';
 import {BINGE_DEVAPI_BASE_URL, API_HEADER} from "@/constants";
 import {useDispatchAlert} from "@/utils/alertFactory";
+import {useMinifiedListLoaders} from "@/utils/initialListLoaders";
 
 export default function Login(): JSX.Element {
     const dispatch = useDispatch();
+    const { dispatchLoadingMinifiedBingeLists, dispatchLoadingMinifiedFavorites } = useMinifiedListLoaders();
     const { dispatchAlert } = useDispatchAlert();
     const router = useRouter();
     type FormData = {
@@ -28,18 +29,7 @@ export default function Login(): JSX.Element {
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({...formData, [e.target.name]: e.target.value});
     }
-    const loadBingeListsIntoState = async (token: string) => {
-        const url:string = BINGE_DEVAPI_BASE_URL + "/bingelist/lists/minified";
-        API_HEADER.headers.Authorization = "Bearer " + token;
-        try {
-            const res = await axios.get(url, API_HEADER);
-            if (res.status === 200) {
-                dispatch(loadMinifiedBingeLists(res.data));
-            }
-        } catch(e: any) {
-            dispatchAlert("danger", "bingelists failed to fetch!");
-        }
-    }
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const config = {
@@ -52,7 +42,8 @@ export default function Login(): JSX.Element {
             const resp: AxiosResponse<User> = await axios.post(BINGE_DEVAPI_BASE_URL + "/auth/new/authenticate", body, config);
             if (resp.status === 200) {
                 dispatch(authenticate(resp.data));
-                await loadBingeListsIntoState(resp.data.token);
+                await dispatchLoadingMinifiedBingeLists(resp.data.token);
+                await dispatchLoadingMinifiedFavorites(resp.data.token);
                 router.push("/trending/landing").then(() => {
                     dispatchAlert("success", "logged in!");
                 });

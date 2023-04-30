@@ -1,0 +1,22 @@
+@import "variables";
+@import "mixins";
+.profile_btn_group {
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+  > button:last-child {
+    > svg {
+      vertical-align: middle;
+      font-size: 4rem;
+      color: $--application-pink;
+    }
+  }
+}
+.binge_btn {
+  @include basicbtn($--application-blue, white);
+  margin-right: 3rem;
+}
+.unbinge_btn {
+  @include basicbtn($--application-darktomato, white);
+  margin-right: 3rem;
+}

@@ -1,0 +1,46 @@
+.profile_btn_group {
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+}
+.profile_btn_group > button:last-child > svg {
+  vertical-align: middle;
+  font-size: 4rem;
+  color: #fc58aa;
+}
+
+.binge_btn {
+  background: #366fc9;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  margin-right: 3rem;
+}
+.binge_btn:hover {
+  background: #2d5da9;
+}
+
+.unbinge_btn {
+  background: #c94c36;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  margin-right: 3rem;
+}
+.unbinge_btn:hover {
+  background: #a9402d;
+}
+
+/*# sourceMappingURL=ProfileActions.module.css.map */

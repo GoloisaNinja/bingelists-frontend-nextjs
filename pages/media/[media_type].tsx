@@ -57,6 +57,7 @@ export default function MediaPage(): JSX.Element {
             media_num_episodes = resp.media.number_of_episodes;
         }
         detailProps = {
+            media_id,
             media_type,
             media_title,
             media_status: resp.media.status,
@@ -68,6 +69,7 @@ export default function MediaPage(): JSX.Element {
             media_genres: resp.media.genres,
             media_vote_count: resp.media.vote_count,
             media_vote_average: resp.media.vote_average,
+            poster_path: resp.media.poster_path,
         }
     }
     const getOfficialYouTubeTrailerFromVideos = (): IVideo | null => {
@@ -104,7 +106,6 @@ export default function MediaPage(): JSX.Element {
                     <h1>{resp.media.tagline}</h1>
                 </div>
                 <MediaDetails data={detailProps!} />
-                <ProfileActions media_id={media_id} media_type={media_type} />
                 <CastCrew data={resp.credits} type={media_type}/>
                 <MediaProviders data={resp.providers} type={media_type}/>
                 <MediaTrailer data={trailer} type={media_type} />

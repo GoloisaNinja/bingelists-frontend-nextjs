@@ -1,6 +1,7 @@
 import {IGenre } from "@/utils/mediaPageInterface";
 
 export type DetailProps = {
+    media_id: string | undefined,
     media_type: string | undefined,
     media_title: string | undefined,
     media_status: string | undefined,
@@ -12,4 +13,5 @@ export type DetailProps = {
     media_genres: IGenre[],
     media_vote_count: number | undefined,
     media_vote_average: number | undefined,
+    poster_path: string | null,
 }

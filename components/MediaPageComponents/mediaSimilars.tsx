@@ -19,9 +19,14 @@ const MediaSimilars:React.FC<MediaSimilarsProps> = (props) => {
     return (
         <div className={styles.similars_container}>
             <h2 className={styles[`similars_header_${props.type}`]}>Similar Finds</h2>
-            <MediaGrid>
-                {similarsToDisplay.map((media) => <MediaCard key={media.id} details={media} />)}
-            </MediaGrid>
+            {similarsToDisplay.length > 0 ? (
+                <MediaGrid>
+                    {similarsToDisplay.map((media) => <MediaCard key={media.id} details={media} />)}
+                </MediaGrid>
+            ) : (
+                <h3 className={styles.no_similars_header}>No similar findings...</h3>
+            )}
+
             {minSimilarCount === 5 && results.length > 5 && (
                 <div className={styles.show_more_container}>
                     <button className={styles.btn_show_more} onClick={() => setMinSimilarCount(20)}>see more</button>

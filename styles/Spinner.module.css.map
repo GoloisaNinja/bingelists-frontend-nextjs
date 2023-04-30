@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["Spinner.module.scss","_variables.scss"],"names":[],"mappings":"AACA;EACE;IAAM;;;AAGR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBCdwB;EDexB;EACA;;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA","file":"Spinner.module.css"}
+{"version":3,"sourceRoot":"","sources":["Spinner.module.scss","_variables.scss"],"names":[],"mappings":"AACA;EACE;IAAM;;;AAGR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBCdwB;EDexB;EACA;;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA","file":"Spinner.module.css"}
