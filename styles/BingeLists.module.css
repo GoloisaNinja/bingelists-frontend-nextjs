@@ -119,6 +119,13 @@
   height: 85px;
 }
 
+.bingelist_empty_container {
+  padding: 2rem;
+}
+.bingelist_empty_container > h2 {
+  font-size: 5rem;
+}
+
 .bingelist_card_grid {
   display: grid;
   grid-template-columns: 1fr;

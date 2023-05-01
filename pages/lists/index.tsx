@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import {authSelector} from "@/features/auth/authSlice";
 import {useDispatchAlert} from "@/utils/alertFactory";
 import useAuthRouteForResponseOrRedirect, {ServerAuthProps} from "@/utils/useAuthRouteForResponseOrRedirect";
+import {useMinifiedListLoaders} from "@/utils/initialListLoaders";
 import Spinner from "@/components/spinner";
 import {IBingeListCard} from "@/utils/bingeListInterface";
 import styles from "@/styles/BingeLists.module.scss";
@@ -12,6 +13,7 @@ import BingeListCard from "@/components/BingeListsPageComponents/BingeListCard";
 import ModalWrapper from "@/components/modalWrapper";
 import ConfirmCancelModal from "@/components/confirmCancelModal";
 export default function BingeLists():JSX.Element {
+    const { dispatchLoadingMinifiedBingeLists } = useMinifiedListLoaders();
     const { token } = useSelector(authSelector);
     const { dispatchAlert } = useDispatchAlert();
     const [createNew, setCreateNew] = useState<boolean>(false);
@@ -42,7 +44,12 @@ export default function BingeLists():JSX.Element {
             newListContainer.classList.add(isActiveClass);
         }
     }
+
     const listCreateControlFlow = async (decision: boolean) => {
+        if (!decision) {
+            setShowModal(false);
+            handleCreateToggle();
+        }
         if (decision) {
             const url = BINGE_DEVAPI_BASE_URL + "/bingelist/create";
             const body = {
@@ -51,40 +58,39 @@ export default function BingeLists():JSX.Element {
             try {
                 const res = await axios.post(url, body, API_HEADER);
                 if (res.status === 200) {
+                    await dispatchLoadingMinifiedBingeLists(token);
                     dispatchAlert("success", "list created successfully!");
-                    setListName("");
-                    mutate();
-                } else {
-                    dispatchAlert("danger", "bad request!");
                 }
             } catch(e:any) {
-                dispatchAlert("danger", "something went wrong!");
+                dispatchAlert("danger", e.message);
+            } finally {
+                setListName("");
+                setShowModal(false);
+                handleCreateToggle();
+                mutate(BINGE_DEVAPI_BASE_URL + "/bingelist/lists");
             }
-        } else {
-            dispatchAlert("danger", "list creation was cancelled!");
         }
-        setCreateNew(!createNew);
-        setShowModal(false);
     }
     const listDeleteControlFlow = async (decision: boolean) => {
+        if (!decision) {
+            setShowModal(false);
+        }
         if (decision) {
             const url = BINGE_DEVAPI_BASE_URL + `/bingelist/delete?listId=${listId}`;
             try {
                 const res = await axios.delete(url, API_HEADER);
                 if (res.status === 200) {
+                    await dispatchLoadingMinifiedBingeLists(token);
                     dispatchAlert("success", "list deleted successfully!");
-                    setListId("");
-                    mutate();
-                } else {
-                    dispatchAlert("danger", "bad request");
                 }
             } catch(e:any) {
                 dispatchAlert("danger", "something went wrong!");
+            } finally {
+                setListId("");
+                setShowModal(false);
+                mutate(BINGE_DEVAPI_BASE_URL + "/bingelist/lists");
             }
-        } else {
-            dispatchAlert("danger", "list deletion was cancelled!");
         }
-        setShowModal(false);
     }
     const handleModalDecision = (decision: boolean) => {
         if (modalActionType === "CREATE") {
@@ -105,6 +111,7 @@ export default function BingeLists():JSX.Element {
         setModalActionType("CREATE");
         setShowModal(true);
     }
+
     return isLoading ? (<Spinner />) : (
         <>
             <div className={styles.page_container}>
@@ -130,9 +137,16 @@ export default function BingeLists():JSX.Element {
                         </form>
                     </div>
                 </div>
-                <div className={styles.bingelist_card_grid}>
-                    {lists.map((list:IBingeListCard) => <BingeListCard key={list.id} data={list} delete={handleDelete}/>)}
-                </div>
+                {Array.isArray(lists) && lists.length > 0 ? (
+                    <div className={styles.bingelist_card_grid}>
+                        {lists.map((list:IBingeListCard) => <BingeListCard key={list.id} data={list} delete={handleDelete}/>)}
+                    </div>
+                ) : (
+                    <div className={styles.bingelist_empty_container}>
+                        <h2>{`You don't have any lists yet...try creating one!`}</h2>
+                    </div>
+                )}
+
             </div>
             {showModal && <ModalWrapper>
                 <ConfirmCancelModal message={modalMessage} handleModalDecision={handleModalDecision} />

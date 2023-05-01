@@ -36,11 +36,13 @@ const useAuthRouteForResponseOrRedirect:React.FC<ServerAuthProps> = (props):any 
             }
         }  else {
             router.back();
+            console.log("error has own prop else statement in use auth fired - something went wrong")
             dispatchAlert("danger", "something went wrong!");
         }
         return {
             data: null,
             isLoading: false,
+            mutate,
         };
     }
     return {
