@@ -1,9 +1,6 @@
 @import "variables";
 @import "mixins";
 
-.search_page_container {
-  @include basicPageContainer;
-}
 .form_container {
   padding: 0 2rem;
   width: 100%;

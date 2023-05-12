@@ -7,15 +7,15 @@ export default function CategoriesPage():JSX.Element {
     const router = useRouter();
     const s: ServerAuthProps = {
         method: "GET",
-        url: "/category/list",
+        url: "/categories/list",
         body: {},
     }
     const {data, isLoading }: any = useAuthRouteForResponseOrRedirect(s);
     let mCats:IGenre[] = [];
     let tCats:IGenre[] = [];
     if (data) {
-        mCats = data.movie.genres;
-        tCats = data.tv.genres;
+        mCats = data.data.movie.genres;
+        tCats = data.data.tv.genres;
     }
 
     return isLoading ? (<Spinner />) : (

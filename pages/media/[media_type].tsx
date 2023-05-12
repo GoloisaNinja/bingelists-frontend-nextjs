@@ -84,7 +84,8 @@ export default function MediaPage(): JSX.Element {
     }
     let backdropImgSrc: string | StaticImageData = "";
     if (data) {
-        resp = data;
+        console.log(data)
+        resp = data.data;
         if (resp.media.backdrop_path === null) {
             backdropImgSrc = NoBackDrop;
         } else {

@@ -20,15 +20,15 @@ export default function CategoryGenrePage():JSX.Element {
     const cn: string = catName as string;
     const s:ServerAuthProps = {
         method: "GET",
-        url: `/category?media_type=${mt}&genre=${g}&page=${p}`,
+        url: `/categories?media_type=${mt}&genre=${g}&page=${p}`,
         body: {},
     }
     const {data, isLoading }:any = useAuthRouteForResponseOrRedirect(s);
     let res:IMediaCard[] = [];
     let totalPages: number = 0;
     if (data) {
-        res = data.results;
-        totalPages = data.total_pages;
+        res = data.data.results;
+        totalPages = data.data.total_pages;
     }
     let currentPage = parseInt(p);
     let prevPage = currentPage - 1 < 1 ? 1 : currentPage - 1;

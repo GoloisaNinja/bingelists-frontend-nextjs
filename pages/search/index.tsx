@@ -1,7 +1,7 @@
 import {FormEvent, useState, useEffect} from 'react';
 import {useRouter} from "next/router";
-import {useSelector} from "react-redux";
-import {authSelector} from "@/features/auth/authSlice";
+import {useSelector, useDispatch} from "react-redux";
+import {authSelector, logout} from "@/features/auth/authSlice";
 import {IMediaCard} from "@/utils/mediaCardInterface";
 import {useDispatchAlert} from "@/utils/alertFactory";
 import axios from "axios";
@@ -13,6 +13,7 @@ import {nanoid} from "nanoid";
 import Spinner from "@/components/spinner";
 
 export default function SearchPage(): JSX.Element {
+    const dispatch = useDispatch();
     const {dispatchAlert} = useDispatchAlert();
     const router = useRouter();
     const {query} = router.query
@@ -20,7 +21,7 @@ export default function SearchPage(): JSX.Element {
     if (typeof query === "string") {
         querystring = query;
     }
-    const {token} = useSelector(authSelector);
+    const {token, isAuthenticated} = useSelector(authSelector);
     const [titleSearch, setTitleSearch] = useState<string>(querystring);
     const [movieSearchResults, setMovieSearchResults] = useState<IMediaCard[]>([]);
     const [tvSearchResults, setTvSearchResults] = useState<IMediaCard[]>([]);
@@ -34,16 +35,26 @@ export default function SearchPage(): JSX.Element {
     }
     const handleSearch = async () => {
         const url = BINGE_DEVAPI_BASE_URL + `/search?query=${titleSearch}`;
-        API_HEADER.headers.Authorization = "Bearer " + token;
+        API_HEADER.headers.Authorization = "Bearer " + token.token;
         try {
             const res = await axios.get(url, API_HEADER);
-            setMovieSearchResults(res.data.movie.results)
-            setTvSearchResults(res.data.tv.results);
+            setMovieSearchResults(res.data.data.movie.results)
+            setTvSearchResults(res.data.data.tv.results);
             setTitleSearch("");
         } catch (e: any) {
+            if (e.response.status === 403) {
+                router.push("/login").then(() => {
+                    if (isAuthenticated) {
+                        dispatch(logout());
+                    }
+                    dispatchAlert("danger", "please authenticate");
+                });
+                return;
+            }
             dispatchAlert("danger", "something went wrong!");
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     }
     useEffect(() => {
         if (query) {

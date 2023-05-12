@@ -4,7 +4,6 @@
   position: relative;
 }
 .landing_container {
-  @include basicPageContainer;
   display: flex;
   flex-direction: column;
 }

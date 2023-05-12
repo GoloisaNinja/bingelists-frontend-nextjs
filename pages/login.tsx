@@ -39,11 +39,12 @@ export default function Login(): JSX.Element {
         }
         const body = JSON.stringify(formData);
         try {
-            const resp: AxiosResponse<User> = await axios.post(BINGE_DEVAPI_BASE_URL + "/auth/new/authenticate", body, config);
+            const resp: AxiosResponse = await axios.post(BINGE_DEVAPI_BASE_URL + "/user/login", body, config);
             if (resp.status === 200) {
-                dispatch(authenticate(resp.data));
-                await dispatchLoadingMinifiedBingeLists(resp.data.token);
-                await dispatchLoadingMinifiedFavorites(resp.data.token);
+                let user = resp.data.data
+                dispatch(authenticate(user));
+                await dispatchLoadingMinifiedBingeLists(user.token.token);
+                await dispatchLoadingMinifiedFavorites(user.token.token);
                 router.push("/trending/landing").then(() => {
                     dispatchAlert("success", "logged in!");
                 });

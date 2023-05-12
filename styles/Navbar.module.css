@@ -1,22 +1,40 @@
+.basic_link_style, .logout_link, .basic_dropdown > a, .auth_dropdown_container > a, .dropdown_container > a {
+  display: inline-flex;
+  width: min-content;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #366fc9;
+  transition: all 0.4s ease;
+}
+.basic_link_style:hover, .logout_link:hover, .basic_dropdown > a:hover, .auth_dropdown_container > a:hover, .dropdown_container > a:hover {
+  border-bottom: 3px solid #C9C236;
+}
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
+  flex-direction: column;
   height: 50px;
   width: 100%;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
   padding: 0 1rem;
   background: black;
   z-index: 3;
+}
+.navbar > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
 .menu_container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin-top: 0.55rem;
   visibility: hidden;
   cursor: pointer;
   transition: all 0.5s ease-out;
@@ -26,12 +44,14 @@
 }
 .menu_container.close > #menu_line:nth-child(1) {
   transform: rotate(45deg) translate(10px, 6px);
+  background: #C9C236;
 }
 .menu_container.close > #menu_line:nth-child(2) {
   opacity: 0;
 }
 .menu_container.close > #menu_line:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -1px);
+  background: #C9C236;
 }
 @media (max-width: 600px) {
   .menu_container {
@@ -63,6 +83,83 @@
   .links_container {
     display: none;
   }
+}
+
+.profile_icon_wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+}
+.profile_icon_wrapper > button {
+  display: inline-flex;
+  width: max-content;
+}
+
+.profile_dropdown {
+  display: none;
+  position: absolute;
+  top: 4rem;
+  right: -1rem;
+  background: rgba(36, 36, 36, 0.99);
+  min-width: 125px;
+  z-index: 1;
+}
+.profile_dropdown > button {
+  margin-left: 0;
+}
+.profile_dropdown > button:hover {
+  background: #366fc9;
+}
+.profile_dropdown > button:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
+.profile_dropdown.show {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem;
+}
+
+.basic_dropdown, .auth_dropdown_container, .dropdown_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 5rem;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 1.3rem;
+  overflow: hidden;
+  background: #242424;
+  opacity: 0.99;
+  transition: all 0.1s ease-in-out;
+}
+.basic_dropdown > a > button, .auth_dropdown_container > a > button, .dropdown_container > a > button {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.basic_dropdown.isActive, .isActive.auth_dropdown_container, .isActive.dropdown_container {
+  height: 185px;
+}
+
+.auth_dropdown_container.isActive {
+  height: 450px;
+}
+
+.drop_intro {
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  font-size: 2.8rem;
+  font-weight: 800;
+}
+
+.yellow_span {
+  color: #C9C236;
+}
+
+.logout_link {
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=Navbar.module.css.map */

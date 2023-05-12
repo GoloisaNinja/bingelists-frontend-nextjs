@@ -17,8 +17,8 @@ export interface IBingeList {
 }
 export interface IBingeListCard {
     createdAt: string,
-    id: string,
-    listUsers: string[],
+    _id: string,
+    users: string[],
     mediaCount: number,
     name: string,
     owner: string,

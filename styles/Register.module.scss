@@ -1,8 +1,6 @@
 @import "mixins";
 @import 'variables';
-.page_container {
-  @include basicPageContainer;
-}
+
 .container {
   @include basicFullPageContainer;
 }

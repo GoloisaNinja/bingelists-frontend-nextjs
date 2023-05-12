@@ -19,8 +19,8 @@ export default function Landing(): JSX.Element {
     let tvData: IMediaCard[] = [];
     let movieData: IMediaCard[] = [];
     if (data) {
-        tvData = data.tv.results;
-        movieData = data.movie.results;
+        tvData = data.data.tv.results;
+        movieData = data.data.movie.results;
     }
 
     return isLoading ? (

@@ -8,14 +8,14 @@ import {loadMinifiedFavorites} from "@/features/favorite/favoriteSlice";
 export function useMinifiedListLoaders() {
     const dispatch = useDispatch();
     const {dispatchAlert} = useDispatchAlert();
-    const bingeUrl:string = BINGE_DEVAPI_BASE_URL + "/bingelist/lists/minified";
-    const favUrl:string = BINGE_DEVAPI_BASE_URL + "/favorite/favorites/minified";
+    const bingeUrl:string = BINGE_DEVAPI_BASE_URL + "/bingelists/minified";
+    const favUrl:string = BINGE_DEVAPI_BASE_URL + "/favorites/minified";
     const dispatchLoadingMinifiedBingeLists = async (token: string) => {
         API_HEADER.headers.Authorization = "Bearer " + token;
         try {
             const res = await axios.get(bingeUrl, API_HEADER);
             if (res.status === 200) {
-                dispatch(loadMinifiedBingeLists(res.data));
+                dispatch(loadMinifiedBingeLists(res.data.data));
             } else {
                 dispatchAlert("danger", "bingelists failed to fetch!");
             }
@@ -29,7 +29,7 @@ export function useMinifiedListLoaders() {
         try {
             const res = await axios.get(favUrl, API_HEADER);
             if (res.status === 200) {
-                dispatch(loadMinifiedFavorites(res.data));
+                dispatch(loadMinifiedFavorites(res.data.data));
             } else {
                 dispatchAlert("danger", "favorites failed to fetch!");
             }

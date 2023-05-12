@@ -1,8 +1,5 @@
 @import "variables";
 @import "mixins";
-.categories_page_container {
-  @include basicPageContainer;
-}
 
 .categories_movies_header {
   @include basicHeader;

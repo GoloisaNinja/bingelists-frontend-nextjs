@@ -6,15 +6,15 @@ export interface IFavoriteAction {
     favoriteId: string,
 }
 export interface Favorites {
-    ownerId: string,
-    movieIds: string[],
-    tvIds: string[],
+    owner: string,
+    movie: string[],
+    tv: string[],
 }
 
 const initialState: Favorites = {
-    ownerId: "",
-    movieIds: [],
-    tvIds: [],
+    owner: "",
+    movie: [],
+    tv: [],
 }
 
 export const favoriteSlice = createSlice({
@@ -27,17 +27,17 @@ export const favoriteSlice = createSlice({
         },
         addToFavorites: (state, {payload}: PayloadAction<IFavoriteAction>) => {
             if (payload.type === "movie") {
-                state.movieIds = [...state.movieIds, payload.favoriteId];
+                state.movie = [...state.movie, payload.favoriteId];
             } else {
-                state.tvIds = [...state.tvIds, payload.favoriteId];
+                state.tv = [...state.tv, payload.favoriteId];
             }
             return state;
         },
         removeFromFavorites: (state, {payload}: PayloadAction<IFavoriteAction>) => {
             if (payload.type === "movie") {
-                state.movieIds = state.movieIds.filter((id) => id !== payload.favoriteId);
+                state.movie = state.movie.filter((id) => id !== payload.favoriteId);
             } else {
-                state.tvIds = state.tvIds.filter((id) => id !== payload.favoriteId);
+                state.tv = state.tv.filter((id) => id !== payload.favoriteId);
             }
         }
     }

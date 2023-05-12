@@ -1,9 +1,6 @@
 @import "variables";
 @import "mixins";
 
-.page_container {
-  @include basicPageContainer;
-}
 .bingelists_hero {
   @include page_hero;
 }

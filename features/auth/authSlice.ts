@@ -11,21 +11,34 @@ interface Invite {
     invitedUserId: string,
     message: string,
 }
+interface Token {
+    _id: string,
+    isExpired: boolean,
+    isRevoked: boolean,
+    token: string,
+    user: string,
+}
 export interface User {
-    id: string,
+    _id: string,
     name: string,
     email: string,
-    token: string,
+    token: Token,
     invites: Invite[],
     createdAt: string,
     isAuthenticated: boolean,
 }
 
 const initialState: User = {
-    id: "",
+    _id: "",
     name: "",
     email: "",
-    token: "",
+    token: {
+        _id: "",
+        isExpired: true,
+        isRevoked: true,
+        token: "",
+        user: "",
+    },
     invites: [],
     createdAt: "",
     isAuthenticated: false,
@@ -36,7 +49,7 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         authenticate: (state, {payload}: PayloadAction<User>) => {
-            state.id = payload.id;
+            state._id = payload._id;
             state.name = payload.name;
             state.email = payload.email;
             state.token = payload.token;

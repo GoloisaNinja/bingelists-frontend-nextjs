@@ -23,8 +23,8 @@ export default function TrendingPage(): JSX.Element {
     let respData: IMediaCard[] = [];
     let total_pages: number = 0;
     if (data) {
-        respData = data.results;
-        total_pages = data.total_pages
+        respData = data.data.results;
+        total_pages = data.data.total_pages
     }
     let currentPage = parseInt(page);
     let prevPage = currentPage - 1 < 1 ? 1 : currentPage - 1;

@@ -22,17 +22,17 @@ export default function BingeLists():JSX.Element {
     const [modalMessage, setModalMessage] = useState<string>("");
     const [listName, setListName] = useState<string>("");
     const [listId, setListId] = useState<string>("");
-    API_HEADER.headers.Authorization = "Bearer " + token;
+    API_HEADER.headers.Authorization = "Bearer " + token.token;
 
     const s: ServerAuthProps = {
         method: "GET",
-        url: "/bingelist/lists",
+        url: "/bingelists",
         body: {},
     }
     const {data, isLoading, mutate}: any = useAuthRouteForResponseOrRedirect(s);
     let lists:IBingeListCard[] = [];
     if (data) {
-        lists = data;
+        lists = data.data;
     }
     const handleCreateToggle = () => {
         setCreateNew(!createNew);
@@ -58,7 +58,7 @@ export default function BingeLists():JSX.Element {
             try {
                 const res = await axios.post(url, body, API_HEADER);
                 if (res.status === 200) {
-                    await dispatchLoadingMinifiedBingeLists(token);
+                    await dispatchLoadingMinifiedBingeLists(token.token);
                     dispatchAlert("success", "list created successfully!");
                 }
             } catch(e:any) {
@@ -76,11 +76,11 @@ export default function BingeLists():JSX.Element {
             setShowModal(false);
         }
         if (decision) {
-            const url = BINGE_DEVAPI_BASE_URL + `/bingelist/delete?listId=${listId}`;
+            const url = BINGE_DEVAPI_BASE_URL + `/bingelist/delete?id=${listId}`;
             try {
                 const res = await axios.delete(url, API_HEADER);
                 if (res.status === 200) {
-                    await dispatchLoadingMinifiedBingeLists(token);
+                    await dispatchLoadingMinifiedBingeLists(token.token);
                     dispatchAlert("success", "list deleted successfully!");
                 }
             } catch(e:any) {
@@ -139,7 +139,7 @@ export default function BingeLists():JSX.Element {
                 </div>
                 {Array.isArray(lists) && lists.length > 0 ? (
                     <div className={styles.bingelist_card_grid}>
-                        {lists.map((list:IBingeListCard) => <BingeListCard key={list.id} data={list} delete={handleDelete}/>)}
+                        {lists.map((list:IBingeListCard) => <BingeListCard key={list._id} data={list} delete={handleDelete}/>)}
                     </div>
                 ) : (
                     <div className={styles.bingelist_empty_container}>

@@ -1,9 +1,6 @@
 @import "mixins";
 @import "variables";
 
-.page_container {
-  @include basicPageContainer;
-}
 .bg_container {
   position: relative;
   width: 100%;

@@ -1,9 +1,6 @@
 @import "mixins";
 @import "variables";
-// page values
-.page_container {
-    @include basicPageContainer;
-}
+
 // hero section
 .header {
     position: relative;

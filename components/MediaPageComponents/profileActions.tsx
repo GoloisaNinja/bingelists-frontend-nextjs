@@ -33,7 +33,7 @@ const ProfileActions: React.FC<ProfileActionProps> = (props) => {
     const mType = media_type as string;
     const {lists} = useSelector(bingeSelector);
     const {token} = useSelector(authSelector);
-    const {movieIds, tvIds} = useSelector(favoriteSelector);
+    const {movie, tv} = useSelector(favoriteSelector);
     const {dispatchAlert} = useDispatchAlert();
     const dispatch = useDispatch();
     const [canBeAddedToLists, setCanBeAddedToLists] = useState<ListIdAndName[]>([]);
@@ -41,7 +41,7 @@ const ProfileActions: React.FC<ProfileActionProps> = (props) => {
     const [isFavorite, setIsFavorite] = useState<boolean>(false);
     const [actionType, setActionType] = useState<string>("ADD");
     const [showModal, setShowModal] = useState<boolean>(false);
-    API_HEADER.headers.Authorization = "Bearer " + token;
+    API_HEADER.headers.Authorization = "Bearer " + token.token;
     useEffect(() => {
         if (lists.length > 0) {
             // lists that we can add the media item to
@@ -73,16 +73,16 @@ const ProfileActions: React.FC<ProfileActionProps> = (props) => {
     useEffect(() => {
         let result: boolean = false;
         if (media_type === "movie") {
-            if (movieIds.includes(media_id)) {
+            if (movie.includes(media_id)) {
                 result = true;
             }
         } else {
-            if (tvIds.includes(media_id)) {
+            if (tv.includes(media_id)) {
                 result = true;
             }
         }
         setIsFavorite(result);
-    }, [media_id, media_type, movieIds, tvIds])
+    }, [media_id, media_type, movie, tv])
 
     const mediaItemAsRequestBody = ():string => {
         return JSON.stringify({
@@ -100,12 +100,13 @@ const ProfileActions: React.FC<ProfileActionProps> = (props) => {
             type: mType,
             favoriteId: mId,
         }
-        const body: string = mediaItemAsRequestBody();
+        let body: string = "";
         if (isFavorite) {
-            url = BINGE_DEVAPI_BASE_URL + "/favorite/favorites/remove";
+            url = BINGE_DEVAPI_BASE_URL + `/favorites/remove?id=${mId}&type=${mType}`;
             message = "removed from favorites";
         } else {
-            url = BINGE_DEVAPI_BASE_URL + "/favorite/favorites/add";
+            url = BINGE_DEVAPI_BASE_URL + "/favorites/add";
+            body = mediaItemAsRequestBody();
             message = "added to favorites!";
         }
         try {
@@ -134,12 +135,13 @@ const ProfileActions: React.FC<ProfileActionProps> = (props) => {
             media_id: mId,
             type: mType,
         }
-        const body = mediaItemAsRequestBody();
+        let body:string = "";
         if (actionType === "ADD") {
             url = BINGE_DEVAPI_BASE_URL + `/bingelist/add?id=${listId}`;
+            body = mediaItemAsRequestBody()
             message = "title added successfully!";
         } else {
-            url = BINGE_DEVAPI_BASE_URL + `/bingelist/remove?id=${listId}`;
+            url = BINGE_DEVAPI_BASE_URL + `/bingelist/remove?id=${listId}&mediaId=${mId}&type=${mType}`;
             message = "title removed successfully!";
         }
         try {

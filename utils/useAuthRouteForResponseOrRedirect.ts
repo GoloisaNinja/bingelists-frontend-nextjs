@@ -21,7 +21,7 @@ const useAuthRouteForResponseOrRedirect:React.FC<ServerAuthProps> = (props):any 
     const fetcher = (url: string) => axios({
         method: props.method,
         url,
-        headers: {"Content-type": "application/json", "Authorization": "Bearer " + token},
+        headers: {"Content-type": "application/json", "Authorization": "Bearer " + token.token},
     }).then((res) => res.data);
     const { data, error, isLoading, mutate } = useSWR(BINGE_DEVAPI_BASE_URL + props.url, fetcher);
     if (error) {
