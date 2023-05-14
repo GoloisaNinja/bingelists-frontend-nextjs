@@ -17,6 +17,7 @@ export function useDispatchAlert() {
         const alert =  CreateAlert(type, message);
         dispatch(setAlert(alert));
         setTimeout(() => {dispatch(removeAlert(alert.id))}, 5000);
+        window.scroll(0,0);
     }
     return { dispatchAlert };
 }

@@ -7,7 +7,6 @@ import {TMDBIMAGE_URL} from "@/constants";
 import useAuthRouteForResponseOrRedirect, {ServerAuthProps} from "@/utils/useAuthRouteForResponseOrRedirect";
 import Spinner from "@/components/spinner";
 import MediaDetails from "@/components/MediaPageComponents/mediaDetails";
-import ProfileActions from "@/components/MediaPageComponents/profileActions";
 import CastCrew from "@/components/MediaPageComponents/mediaCastCrew";
 import MediaProviders from "@/components/MediaPageComponents/mediaProviders";
 import MediaTrailer from "@/components/MediaPageComponents/mediaTrailer";
@@ -84,7 +83,6 @@ export default function MediaPage(): JSX.Element {
     }
     let backdropImgSrc: string | StaticImageData = "";
     if (data) {
-        console.log(data)
         resp = data.data;
         if (resp.media.backdrop_path === null) {
             backdropImgSrc = NoBackDrop;

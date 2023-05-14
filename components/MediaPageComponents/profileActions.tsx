@@ -43,7 +43,7 @@ const ProfileActions: React.FC<ProfileActionProps> = (props) => {
     const [showModal, setShowModal] = useState<boolean>(false);
     API_HEADER.headers.Authorization = "Bearer " + token.token;
     useEffect(() => {
-        if (lists.length > 0) {
+        if (lists !== null && lists.length > 0) {
             // lists that we can add the media item to
             let aLists: ListIdAndName[] = [];
             // lists that we can remove the media item from
@@ -117,7 +117,6 @@ const ProfileActions: React.FC<ProfileActionProps> = (props) => {
                 } else {
                     dispatch(addToFavorites(payload));
                 }
-                dispatchAlert("success", message);
             } else {
                 dispatchAlert("danger", "something went wrong!");
             }

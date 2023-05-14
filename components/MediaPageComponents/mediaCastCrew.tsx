@@ -19,6 +19,15 @@ const CastCrew: React.FC<CastCrewProps> = (props) => {
     if (crew.length > 0) {
         initialCrew = crew.slice(0, 20);
         let crewIds: number[] = [];
+        let directorIndex: number;
+        directorIndex = crew.slice(0, crew.length / 2).findIndex((crew) => crew.job === "Director");
+        if (directorIndex === -1) {
+            directorIndex = crew.slice(crew.length / 2, crew.length).findIndex((crew) => crew.job === "Director");
+        }
+        if (directorIndex !== -1) {
+            crewIds.push(crew[directorIndex].id)
+            cleanCrew.push(crew[directorIndex]);
+        }
         for (const crewPerson of initialCrew) {
             if (!crewIds.includes(crewPerson.id)) {
                 crewIds.push(crewPerson.id);

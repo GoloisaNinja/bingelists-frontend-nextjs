@@ -51,6 +51,12 @@
   color: #36C9C2;
 }
 
+.checkbox {
+  margin-right: auto;
+  width: 25px;
+  height: 25px;
+}
+
 .login_form {
   display: flex;
   flex-direction: column;

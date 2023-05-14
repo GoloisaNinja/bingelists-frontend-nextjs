@@ -75,6 +75,7 @@ export default function SearchPage(): JSX.Element {
                         name={"title"}
                         placeholder={"enter title to search for..."}
                         value={titleSearch}
+                        autoFocus={true}
                         onChange={(e) => setTitleSearch(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && handleQueryParam(e)}/>
                     <button type={"submit"}>search</button>

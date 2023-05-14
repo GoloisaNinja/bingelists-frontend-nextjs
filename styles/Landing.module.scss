@@ -65,3 +65,7 @@
 .yellow_span {
   @include colored_span($--application-yellow);
 }
+.empty_list {
+  font-size: 5rem;
+  line-height: 1;
+}

@@ -31,11 +31,48 @@
   flex: 1;
 }
 
+.btngroup {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.btngroup > button:first-child {
+  background: #9136C9;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  padding: 1rem 1.5rem;
+}
+.btngroup > button:first-child:hover {
+  background: #7a2da9;
+}
+.btngroup > button:last-child {
+  background: #c94c36;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  padding: 1rem 1.5rem;
+  margin-left: 2rem;
+}
+.btngroup > button:last-child:hover {
+  background: #a9402d;
+}
+
 .card_bottom_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2.4rem;
 }
 .card_bottom_container > button > svg {
   font-size: 1.6rem;

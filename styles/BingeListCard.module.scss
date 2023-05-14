@@ -29,11 +29,23 @@
 .media_count {
   flex: 1;
 }
+.btngroup {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  >button:first-child {
+    @include basicbtn($--application-purple, white);
+    padding: 1rem 1.5rem;
+  }
+  >button:last-child {
+    @include basicbtn($--application-darktomato, white);
+    padding: 1rem 1.5rem;
+    margin-left: 2rem;
+  }
+}
 .card_bottom_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2.4rem;
   > button {
     > svg {
       font-size: 1.6rem;

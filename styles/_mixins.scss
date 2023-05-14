@@ -169,32 +169,38 @@
   > h1:nth-child(2) {
     margin-bottom: 12rem;
   }
+  > a:nth-child(3) {
+    display: inline-flex;
+    width: max-content;
+  }
 }
 @mixin page_hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 0 2rem;
-  @media (min-width: 500px) {
-    padding: 0 4rem;
-  }
-  > h1 {
-    font-size: 6rem;
-    z-index: 2;
-    line-height: 1;
-    text-shadow: 2px 2px 2px #000000;
-    @media (min-width: 400px) {
-      font-size: 7rem;
-    }
-    @media (min-width: 465px) {
-      font-size: 8rem;
-    }
-    @media (min-width: 600px) {
-      font-size: 10rem;
-    }
-  }
+  //position: relative;
+  //display: flex;
+  //flex-direction: column;
+  //padding: 0 2rem;
+  //@media (min-width: 500px) {
+  //  padding: 0 4rem;
+  //}
+  //> h1 {
+  //  font-size: 6rem;
+  //  z-index: 2;
+  //  line-height: 1;
+  //  text-shadow: 2px 2px 2px #000000;
+  //  @media (min-width: 400px) {
+  //    font-size: 7rem;
+  //  }
+  //  @media (min-width: 465px) {
+  //    font-size: 8rem;
+  //  }
+  //  @media (min-width: 600px) {
+  //    font-size: 10rem;
+  //  }
+  //}
+  @include page_hero_nobg;
   > h1:nth-child(2) {
     margin-top: 12rem;
+    margin-bottom: 0;
   }
   > h1:last-child {
     margin-bottom: 12rem;

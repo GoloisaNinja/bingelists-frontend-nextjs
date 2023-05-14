@@ -67,7 +67,7 @@ export default function BingeLists():JSX.Element {
                 setListName("");
                 setShowModal(false);
                 handleCreateToggle();
-                mutate(BINGE_DEVAPI_BASE_URL + "/bingelist/lists");
+                mutate(BINGE_DEVAPI_BASE_URL + "/bingelists");
             }
         }
     }
@@ -88,7 +88,7 @@ export default function BingeLists():JSX.Element {
             } finally {
                 setListId("");
                 setShowModal(false);
-                mutate(BINGE_DEVAPI_BASE_URL + "/bingelist/lists");
+                mutate(BINGE_DEVAPI_BASE_URL + "/bingelists");
             }
         }
     }

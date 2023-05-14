@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
                         {auth.name.split("")[0].toUpperCase()}
                     </button>
                     <div id={"profile_dropdown"} className={styles.profile_dropdown}>
-                        <button className={styles.links} onClick={() => handleDropLinks("/trending/landing")}>Favorites</button>
+                        <button className={styles.links} onClick={() => handleDropLinks("/favorites")}>Favorites</button>
                         <button className={styles.links} onClick={() => handleDropLinks("/trending/landing")}>Profile</button>
                         <button className={styles.links} onClick={() => handleDropLinks("logout")}>Logout</button>
                     </div>
@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
                     <Link className={styles.links} href={"/lists"}>
                         <button onClick={() => handleHamburger()}>Lists</button>
                     </Link>
-                    <Link className={styles.links} href={"/lists"}>
+                    <Link className={styles.links} href={"/favorites"}>
                         <button onClick={() => handleHamburger()}>Favorites</button>
                     </Link>
                     <Link className={styles.links} href={"/search"}>

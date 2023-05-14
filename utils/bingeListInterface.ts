@@ -1,18 +1,11 @@
-interface IBingeListTitle {
-    mediaId: number,
-    title: string,
-    type: string,
-    posterPath: string,
-    primaryGenreId: number,
-}
+import {IListTitle} from "@/utils/sharedInterfaces";
 export interface IBingeList {
-    id: string,
+    _id: string,
     name: string,
     owner: string,
-    listUsers: string[],
-    titles: IBingeListTitle[],
+    users: string[],
+    titles: IListTitle[],
     mediaCount: number,
-    totalPages: number,
     createdAt: string,
 }
 export interface IBingeListCard {

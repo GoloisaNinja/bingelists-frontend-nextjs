@@ -23,7 +23,11 @@
     }
   }
 }
-
+.checkbox {
+  margin-right: auto;
+  width: 25px;
+  height: 25px;
+}
 .login_form {
   @include basicFormStyle;
   width: 100%;

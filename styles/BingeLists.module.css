@@ -30,8 +30,20 @@
     font-size: 10rem;
   }
 }
+.bingelists_hero > h1:nth-child(1) {
+  margin-top: 12rem;
+  word-break: break-word;
+}
+.bingelists_hero > h1:nth-child(2) {
+  margin-bottom: 12rem;
+}
+.bingelists_hero > a:nth-child(3) {
+  display: inline-flex;
+  width: max-content;
+}
 .bingelists_hero > h1:nth-child(2) {
   margin-top: 12rem;
+  margin-bottom: 0;
 }
 .bingelists_hero > h1:last-child {
   margin-bottom: 12rem;
