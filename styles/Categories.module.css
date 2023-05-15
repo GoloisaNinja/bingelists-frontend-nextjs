@@ -127,6 +127,7 @@
   bottom: 0;
   right: 0;
   padding: 2rem;
+  color: white;
 }
 .category_btn > h3 {
   font-size: 1.6rem;

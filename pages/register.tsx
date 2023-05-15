@@ -8,6 +8,7 @@ import axios from "axios";
 import {BINGE_BASE_URL} from "@/constants";
 import Head from 'next/head';
 import Link from "next/link";
+import Spinner from "@/components/spinner";
 import styles from '@/styles/Register.module.scss';
 export default function Register(): JSX.Element {
     const {dispatchAlert} = useDispatchAlert();
@@ -30,12 +31,14 @@ export default function Register(): JSX.Element {
     }
     const [formData, setFormData] = useState<Registration>(initRegistration!);
     const { username, email, password, confirmPassword, appearPublic} = formData;
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const handleRegistration = async (e: FormEvent) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             dispatchAlert("danger", "passwords must match!")
             return;
         }
+        setIsLoading(true);
         const body = JSON.stringify({
             name: username,
             email,
@@ -58,7 +61,7 @@ export default function Register(): JSX.Element {
             dispatchAlert("danger", e.message)
         }
     }
-    return (
+    return isLoading ? (<Spinner />) : (
         <>
             <Head>
                 <title>Binge Lists | Register Page</title>

@@ -9,6 +9,7 @@ import styles from '@/styles/Login.module.scss';
 import {BINGE_BASE_URL} from "@/constants";
 import {useDispatchAlert} from "@/utils/alertFactory";
 import {useMinifiedListLoaders} from "@/utils/initialListLoaders";
+import Spinner from "@/components/spinner";
 
 export default function Login(): JSX.Element {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export default function Login(): JSX.Element {
         password: "",
     }
     const [formData, setFormData] = useState<FormData>(initialForm);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const { email, password } = formData;
 
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +34,7 @@ export default function Login(): JSX.Element {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsLoading(true);
         const config = {
             headers: {
                 "Content-type": "application/json",
@@ -54,7 +57,7 @@ export default function Login(): JSX.Element {
         }
 
     }
-    return (
+    return isLoading ? (<Spinner />) : (
         <>
             <Head>
                 <title>Binge Lists | Login Page</title>
