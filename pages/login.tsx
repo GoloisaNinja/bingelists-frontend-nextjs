@@ -6,7 +6,7 @@ import axios, {AxiosResponse} from "axios";
 import { useDispatch } from "react-redux";
 import { authenticate, User } from "@/features/auth/authSlice";
 import styles from '@/styles/Login.module.scss';
-import {BINGE_DEVAPI_BASE_URL, API_HEADER} from "@/constants";
+import {BINGE_BASE_URL} from "@/constants";
 import {useDispatchAlert} from "@/utils/alertFactory";
 import {useMinifiedListLoaders} from "@/utils/initialListLoaders";
 
@@ -39,7 +39,7 @@ export default function Login(): JSX.Element {
         }
         const body = JSON.stringify(formData);
         try {
-            const resp: AxiosResponse = await axios.post(BINGE_DEVAPI_BASE_URL + "/user/login", body, config);
+            const resp: AxiosResponse = await axios.post(BINGE_BASE_URL + "/user/login", body, config);
             if (resp.status === 200) {
                 let user = resp.data.data
                 dispatch(authenticate(user));

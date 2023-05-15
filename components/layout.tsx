@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import Navbar from "@/components/navbar";
 import Alert from "@/components/alert";
+import Footer from "@/components/footer";
 import styles from "@/styles/Landing.module.scss";
 
 const Layout = ({ children }: PropsWithChildren) => {
@@ -9,6 +10,7 @@ const Layout = ({ children }: PropsWithChildren) => {
             <Navbar />
             <Alert />
             {children}
+            <Footer />
         </div>
     );
 }

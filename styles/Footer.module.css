@@ -1,0 +1,64 @@
+.footer_grid {
+  display: grid;
+  grid-template-areas: "links personal" "logo logo" "copyright copyright";
+  max-width: 800px;
+  margin-top: 8rem;
+}
+@media (max-width: 500px) {
+  .footer_grid {
+    grid-template-areas: "links" "personal" "logo" "copyright";
+  }
+}
+
+.logo {
+  grid-area: logo;
+  padding-left: 0.5rem;
+}
+
+.links_common, .personalLinks, .links {
+  display: flex;
+  padding: 1.8rem;
+  flex-direction: column;
+  grid-area: links;
+}
+.links_common > p, .personalLinks > p, .links > p {
+  font-size: 3rem;
+  font-weight: 800;
+}
+.links_common > a, .personalLinks > a, .links > a {
+  font-size: 1.6rem;
+  margin-top: 1.2rem;
+}
+
+.links {
+  grid-area: links;
+}
+
+.personalLinks {
+  grid-area: personal;
+}
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  grid-area: copyright;
+  padding: 1.8rem;
+  font-size: 1.2rem;
+}
+.copyright > p > svg {
+  vertical-align: middle;
+}
+
+.pink_span {
+  color: #fc58aa;
+}
+
+.blue_span {
+  color: #366fc9;
+}
+
+.yellow_span {
+  color: #C9C236;
+}
+
+/*# sourceMappingURL=Footer.module.css.map */

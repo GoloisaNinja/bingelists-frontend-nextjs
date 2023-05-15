@@ -6,7 +6,7 @@ import {favoriteSelector, addToFavorites, removeFromFavorites, IFavoriteAction} 
 import {useDispatch} from "react-redux";
 import axios from 'axios';
 import {FaHeart, FaRegHeart} from 'react-icons/fa';
-import {BINGE_DEVAPI_BASE_URL, API_HEADER} from "@/constants";
+import {BINGE_BASE_URL, API_HEADER} from "@/constants";
 import {useDispatchAlert} from "@/utils/alertFactory";
 import ModalWrapper from "@/components/modalWrapper";
 import AddRemoveMediaModal from "@/components/addRemoveMediaModal";
@@ -102,10 +102,10 @@ const ProfileActions: React.FC<ProfileActionProps> = (props) => {
         }
         let body: string = "";
         if (isFavorite) {
-            url = BINGE_DEVAPI_BASE_URL + `/favorites/remove?id=${mId}&type=${mType}`;
+            url = BINGE_BASE_URL + `/favorites/remove?id=${mId}&type=${mType}`;
             message = "removed from favorites";
         } else {
-            url = BINGE_DEVAPI_BASE_URL + "/favorites/add";
+            url = BINGE_BASE_URL + "/favorites/add";
             body = mediaItemAsRequestBody();
             message = "added to favorites!";
         }
@@ -136,11 +136,11 @@ const ProfileActions: React.FC<ProfileActionProps> = (props) => {
         }
         let body:string = "";
         if (actionType === "ADD") {
-            url = BINGE_DEVAPI_BASE_URL + `/bingelist/add?id=${listId}`;
+            url = BINGE_BASE_URL + `/bingelist/add?id=${listId}`;
             body = mediaItemAsRequestBody()
             message = "title added successfully!";
         } else {
-            url = BINGE_DEVAPI_BASE_URL + `/bingelist/remove?id=${listId}&mediaId=${mId}&type=${mType}`;
+            url = BINGE_BASE_URL + `/bingelist/remove?id=${listId}&mediaId=${mId}&type=${mType}`;
             message = "title removed successfully!";
         }
         try {

@@ -1,6 +1,8 @@
 export const TMDBIMAGE_URL = "https://image.tmdb.org/t/p/original";
-export const BINGE_DEVAPI_BASE_URL = "http://localhost:5000/api/v1";
-export const BINGE_PRODAPI_BASE_URL = "unknown";
+// dev api url
+//export const BINGE_BASE_URL = "http://localhost:5000/api/v1";
+// prod api url
+export const BINGE_BASE_URL = "https://go-bingelist-backend.onrender.com/api/v1";
 export const YTEMBED_BASE_URL = "https://youtube.com/embed/";
 
 export const API_HEADER = {

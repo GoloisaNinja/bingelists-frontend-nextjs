@@ -1,0 +1,67 @@
+@import 'mixins';
+@import 'variables';
+
+.footer_grid {
+  display: grid;
+  grid-template-areas:
+          "links personal"
+          "logo logo"
+          "copyright copyright";
+  max-width: 800px;
+  margin-top: 8rem;
+  @media (max-width: 500px) {
+    grid-template-areas:
+          "links"
+          "personal"
+          "logo"
+          "copyright";
+  }
+}
+.logo {
+  grid-area: logo;
+  padding-left: .5rem;
+}
+.links_common {
+  display: flex;
+  padding: 1.8rem;
+  flex-direction: column;
+  grid-area: links;
+  > p {
+    font-size: 3rem;
+    font-weight: 800;
+  }
+  > a {
+    font-size: 1.6rem;
+    margin-top: 1.2rem;
+  }
+}
+.links {
+  grid-area: links;
+  @extend .links_common;
+}
+.personalLinks {
+  grid-area: personal;
+  @extend .links_common;
+}
+.copyright {
+  display: flex;
+  flex-direction: column;
+  grid-area: copyright;
+  padding: 1.8rem;
+  font-size: 1.2rem;
+  > p {
+    > svg {
+      vertical-align: middle;
+    }
+  }
+
+}
+.pink_span {
+  @include colored_span($--application-pink);
+}
+.blue_span {
+  @include colored_span($--application-blue);
+}
+.yellow_span {
+  @include colored_span($--application-yellow);
+}

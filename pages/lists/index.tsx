@@ -1,6 +1,6 @@
 import {FormEvent, useState} from 'react';
 import axios from 'axios';
-import {API_HEADER, BINGE_DEVAPI_BASE_URL} from "@/constants";
+import {API_HEADER, BINGE_BASE_URL} from "@/constants";
 import {useSelector} from "react-redux";
 import {authSelector} from "@/features/auth/authSlice";
 import {useDispatchAlert} from "@/utils/alertFactory";
@@ -51,7 +51,7 @@ export default function BingeLists():JSX.Element {
             handleCreateToggle();
         }
         if (decision) {
-            const url = BINGE_DEVAPI_BASE_URL + "/bingelist/create";
+            const url = BINGE_BASE_URL + "/bingelist/create";
             const body = {
                 name: listName,
             }
@@ -67,7 +67,7 @@ export default function BingeLists():JSX.Element {
                 setListName("");
                 setShowModal(false);
                 handleCreateToggle();
-                mutate(BINGE_DEVAPI_BASE_URL + "/bingelists");
+                mutate(BINGE_BASE_URL + "/bingelists");
             }
         }
     }
@@ -76,7 +76,7 @@ export default function BingeLists():JSX.Element {
             setShowModal(false);
         }
         if (decision) {
-            const url = BINGE_DEVAPI_BASE_URL + `/bingelist/delete?id=${listId}`;
+            const url = BINGE_BASE_URL + `/bingelist/delete?id=${listId}`;
             try {
                 const res = await axios.delete(url, API_HEADER);
                 if (res.status === 200) {
@@ -88,7 +88,7 @@ export default function BingeLists():JSX.Element {
             } finally {
                 setListId("");
                 setShowModal(false);
-                mutate(BINGE_DEVAPI_BASE_URL + "/bingelists");
+                mutate(BINGE_BASE_URL + "/bingelists");
             }
         }
     }

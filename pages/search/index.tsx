@@ -5,7 +5,7 @@ import {authSelector, logout} from "@/features/auth/authSlice";
 import {IMediaCard} from "@/utils/mediaCardInterface";
 import {useDispatchAlert} from "@/utils/alertFactory";
 import axios from "axios";
-import {API_HEADER, BINGE_DEVAPI_BASE_URL} from "@/constants";
+import {API_HEADER, BINGE_BASE_URL} from "@/constants";
 import styles from "@/styles/Search.module.scss";
 import MediaGrid from "@/components/mediaGrid";
 import MediaCard from "@/components/mediaCard";
@@ -34,7 +34,7 @@ export default function SearchPage(): JSX.Element {
         router.replace(`/search?query=${encoded}`).then();
     }
     const handleSearch = async () => {
-        const url = BINGE_DEVAPI_BASE_URL + `/search?query=${titleSearch}`;
+        const url = BINGE_BASE_URL + `/search?query=${titleSearch}`;
         API_HEADER.headers.Authorization = "Bearer " + token.token;
         try {
             const res = await axios.get(url, API_HEADER);

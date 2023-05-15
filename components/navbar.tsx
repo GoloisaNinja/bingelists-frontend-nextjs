@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 import {authSelector, logout} from "@/features/auth/authSlice";
 import {useDispatchAlert} from "@/utils/alertFactory";
-import {API_HEADER, BINGE_DEVAPI_BASE_URL} from "@/constants";
+import {API_HEADER, BINGE_BASE_URL} from "@/constants";
 import styles from "../styles/Navbar.module.scss";
 
 const Navbar: React.FC = () => {
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
     const handleLogout = async () => {
         API_HEADER.headers.Authorization = "Bearer " + auth.token.token;
         try {
-            const resp = await axios.post(BINGE_DEVAPI_BASE_URL + "/user/logout", {}, API_HEADER);
+            const resp = await axios.post(BINGE_BASE_URL + "/user/logout", {}, API_HEADER);
             if (resp.status === 200) {
                 dispatch(logout());
                 router.push("/login").then(() => {
@@ -53,12 +53,11 @@ const Navbar: React.FC = () => {
     const handleDropLinks = (url: string) => {
         if (url === "logout") {
             toggleProfileDrop();
-            handleLogout().then(() => {
-                return;
-            })
+            handleLogout().then()
+        } else {
+            toggleProfileDrop();
+            router.push(url).then();
         }
-        toggleProfileDrop();
-        router.push(url).then();
     }
     const handleHamburgerLogout = () => {
         handleHamburger();

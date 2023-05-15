@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {authenticate} from "@/features/auth/authSlice";
 import {useMinifiedListLoaders} from "@/utils/initialListLoaders";
 import axios from "axios";
-import {BINGE_DEVAPI_BASE_URL} from "@/constants";
+import {BINGE_BASE_URL} from "@/constants";
 import Head from 'next/head';
 import Link from "next/link";
 import styles from '@/styles/Register.module.scss';
@@ -43,7 +43,7 @@ export default function Register(): JSX.Element {
             isPrivate: !appearPublic
         })
         try {
-            const resp = await axios.post(BINGE_DEVAPI_BASE_URL + "/user/register", body)
+            const resp = await axios.post(BINGE_BASE_URL + "/user/register", body)
             if (resp.status === 200) {
                 let user = resp.data.data;
                 dispatch(authenticate(user));

@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {API_HEADER, BINGE_DEVAPI_BASE_URL} from "@/constants";
+import {API_HEADER, BINGE_BASE_URL} from "@/constants";
 import axios from "axios";
 import {loadMinifiedBingeLists} from "@/features/binge/bingeSlice";
 import {useDispatchAlert} from "@/utils/alertFactory";
@@ -8,8 +8,8 @@ import {loadMinifiedFavorites} from "@/features/favorite/favoriteSlice";
 export function useMinifiedListLoaders() {
     const dispatch = useDispatch();
     const {dispatchAlert} = useDispatchAlert();
-    const bingeUrl:string = BINGE_DEVAPI_BASE_URL + "/bingelists/minified";
-    const favUrl:string = BINGE_DEVAPI_BASE_URL + "/favorites/minified";
+    const bingeUrl:string = BINGE_BASE_URL + "/bingelists/minified";
+    const favUrl:string = BINGE_BASE_URL + "/favorites/minified";
     const dispatchLoadingMinifiedBingeLists = async (token: string) => {
         API_HEADER.headers.Authorization = "Bearer " + token;
         try {
