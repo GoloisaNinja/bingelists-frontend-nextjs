@@ -30,7 +30,7 @@ const BingeListCard:React.FC<BingeListCardProps> = (props) => {
             <p className={styles.media_count}>Total Items: {mediaCount}</p>
             <div className={styles.btngroup}>
                 <button className={styles.viewList_btn}
-                        onClick={() => router.push(`/lists/${listId}`)}
+                        onClick={() => router.push(`/lists/${listId}?page=1`)}
                 >View List</button>
                 {isOwner && (<button className={styles.invite_btn}>Invite</button>)}
             </div>

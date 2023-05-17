@@ -16,3 +16,7 @@ export interface IBingeListCard {
     name: string,
     owner: string,
 }
+export interface IBingeTitles {
+    name: string
+    titles: IListTitle[]
+}

@@ -1,0 +1,39 @@
+@import "variables";
+@import "mixins";
+
+.selectors_container {
+  display: flex;
+  flex-direction: column;
+}
+.searchbar {
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+.filters_container {
+  margin-top: 2rem;
+  > select:first-child {
+    margin-right: 2rem;
+  }
+  > select {
+    padding: 1rem;
+    font-size: 1.6rem;
+  }
+}
+.filters_btn_group {
+  display: flex;
+  margin-top: 2rem;
+  > button:first-child {
+    @include basicbtn($--application-purple, white);
+    margin-right: 2rem;
+    padding: 1rem 1.5rem;
+  }
+  > button:last-child {
+    @include basicbtn($--application-darktomato, white);
+    padding: 1rem 1.5rem;
+  }
+  > button {
+    display: inline-flex;
+    width: max-content;
+
+  }
+}

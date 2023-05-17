@@ -58,17 +58,17 @@ export default function Register(): JSX.Element {
             }
         } catch(e: any) {
             console.log(e)
+            setIsLoading(false);
             dispatchAlert("danger", e.message)
         }
     }
-    return isLoading ? (<Spinner />) : (
+    return (
         <>
             <Head>
                 <title>Binge Lists | Register Page</title>
                 <meta name={"description"} content={"Register an account with Binge Lists to manage your Movies, Tv, Favourites, and share what to Binge next!"} />
             </Head>
-            <div className={styles.page_container}>
-                <div className={styles.container}>
+            <div className={styles.registration_container}>
                     <div className={styles.bgimg}></div>
                     <div className={styles.form_container}>
                         <h1><span className={styles.span_blue}>B</span>inge <span className={styles.span_yellow}>R</span>egister</h1>
@@ -77,6 +77,7 @@ export default function Register(): JSX.Element {
                                 <label>Username</label>
                                 <input type={"text"}
                                        name={"username"}
+                                       autoComplete={"username"}
                                        required={true}
                                        value={username}
                                        onChange={(e) => setFormData({...formData, [e.target.name]: e.target.value})}
@@ -84,6 +85,7 @@ export default function Register(): JSX.Element {
                                 <label>Email</label>
                                 <input type={"email"}
                                        name={"email"}
+                                       autoComplete={"current-email"}
                                        required={true}
                                        value={email}
                                        onChange={(e) => setFormData({...formData, [e.target.name]: e.target.value})}
@@ -123,7 +125,7 @@ export default function Register(): JSX.Element {
                         </div>
                     </div>
                 </div>
-            </div>
+            {isLoading && (<Spinner />)}
         </>
     );
 }

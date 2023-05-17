@@ -1,6 +1,10 @@
 @import 'mixins';
 @import 'variables';
 
+.footer_container {
+  background: black;
+}
+
 .footer_grid {
   display: grid;
   grid-template-areas:
@@ -9,6 +13,7 @@
           "copyright copyright";
   max-width: 800px;
   margin-top: 8rem;
+  background: #171717;
   @media (max-width: 500px) {
     grid-template-areas:
           "links"
@@ -49,12 +54,6 @@
   grid-area: copyright;
   padding: 1.8rem;
   font-size: 1.2rem;
-  > p {
-    > svg {
-      vertical-align: middle;
-    }
-  }
-
 }
 .pink_span {
   @include colored_span($--application-pink);

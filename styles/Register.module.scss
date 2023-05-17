@@ -1,11 +1,14 @@
 @import "mixins";
 @import 'variables';
 
-.container {
-  @include basicFullPageContainer;
+.registration_container {
+  width: 100%;
+  height: auto;
+  position: relative;
 }
 .bgimg {
-  @include basicFullPageBG("../public/images/lou.webp", .25)
+  @include basicFullPageBG("../public/images/lou.webp", .25);
+  z-index: -1;
 }
 
 .form_container {

@@ -6,7 +6,7 @@ import styles from '@/styles/Footer.module.scss';
 export default function Footer() {
     const currentYear = new Date().getFullYear();
     return (
-        <footer>
+        <footer className={styles.footer_container}>
             <div className={styles.footer_grid}>
                 <div className={styles.logo}>
                     <Image src={Logo} alt={"a logo for bingelists - the i in binge is a soda cup and the i in list is popcorn container"} width={196} height={131}/>
@@ -19,7 +19,7 @@ export default function Footer() {
                 </div>
                 <div className={styles.copyright}>
                     <p>Made with <span className={styles.pink_span}><FaHeart /></span></p>
-                    <p>BingeList.app <FaRegCopyright /> <span className={styles.yellow_span}>{currentYear}</span></p>
+                    <p>BingeLists.app <FaRegCopyright /> <span className={styles.yellow_span}>{currentYear}</span></p>
                 </div>
                 <div className={styles.personalLinks}>
                     <p><span className={styles.pink_span}>Creator</span> Links</p>

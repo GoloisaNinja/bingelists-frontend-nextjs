@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Link from "next/link";
 import {useRouter} from "next/router";
 import axios, {AxiosResponse} from "axios";
-import { useDispatch } from "react-redux";
-import { authenticate, User } from "@/features/auth/authSlice";
+import {useDispatch} from "react-redux";
+import {authenticate, User} from "@/features/auth/authSlice";
 import styles from '@/styles/Login.module.scss';
 import {BINGE_BASE_URL} from "@/constants";
 import {useDispatchAlert} from "@/utils/alertFactory";
@@ -13,8 +13,8 @@ import Spinner from "@/components/spinner";
 
 export default function Login(): JSX.Element {
     const dispatch = useDispatch();
-    const { dispatchLoadingMinifiedBingeLists, dispatchLoadingMinifiedFavorites } = useMinifiedListLoaders();
-    const { dispatchAlert } = useDispatchAlert();
+    const {dispatchLoadingMinifiedBingeLists, dispatchLoadingMinifiedFavorites} = useMinifiedListLoaders();
+    const {dispatchAlert} = useDispatchAlert();
     const router = useRouter();
     type FormData = {
         email: string,
@@ -26,7 +26,7 @@ export default function Login(): JSX.Element {
     }
     const [formData, setFormData] = useState<FormData>(initialForm);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const { email, password } = formData;
+    const {email, password} = formData;
 
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData({...formData, [e.target.name]: e.target.value});
@@ -48,50 +48,55 @@ export default function Login(): JSX.Element {
                 dispatch(authenticate(user));
                 await dispatchLoadingMinifiedBingeLists(user.token.token);
                 await dispatchLoadingMinifiedFavorites(user.token.token);
+                setIsLoading(false);
                 router.push("/trending/landing").then(() => {
                     dispatchAlert("success", "logged in!");
                 });
             }
-        } catch(e: any) {
+        } catch (e: any) {
+            setIsLoading(false);
             dispatchAlert("danger", e.message);
         }
 
     }
-    return isLoading ? (<Spinner />) : (
+    return (
         <>
             <Head>
                 <title>Binge Lists | Login Page</title>
-                <meta name={"description"} content={"Login to Binge Lists to manage your Movies, Tv, Favourites, and share what to Binge next!"} />
+                <meta name={"description"}
+                      content={"Login to Binge Lists to manage your Movies, Tv, Favourites, and share what to Binge next!"}/>
             </Head>
-            <div className={styles.page_container}>
-                <div className={styles.container}>
-                    <div className={styles.bgimg}></div>
-                    <div className={styles.form_container}>
-                        <h1><span className={styles.span_blue}>B</span>inge <span className={styles.span_yellow}>L</span>ogin</h1>
-                        <div className={styles.form_wrapper}>
-                            <form className={styles.login_form} onSubmit={(e) => handleSubmit(e)}>
-                                <label>Email</label>
-                                <input type={"email"}
-                                       name={"email"}
-                                       autoFocus={true}
-                                       autoComplete={"email-address"}
-                                       value={email}
-                                       onChange={(e) => handleInput(e)}
-                                ></input>
-                                <label>Password</label>
-                                <input type={"password"}
-                                       name={"password"}
-                                       autoComplete={"current-password"}
-                                       value={password}
-                                       onChange={(e) => handleInput(e)}
-                                ></input>
-                                <button type={"submit"} className={styles.btn_submit}>login</button>
-                            </form>
-                            <h4>No Account? Register <Link href={"/register"}>here</Link></h4>
-                        </div>
+            <div className={styles.login_container}>
+                <div className={styles.bgimg}></div>
+                <div className={styles.form_container}>
+                    <h1><span className={styles.span_blue}>B</span>inge <span
+                        className={styles.span_yellow}>L</span>ogin</h1>
+                    <div className={styles.form_wrapper}>
+                        <form className={styles.login_form} onSubmit={(e) => handleSubmit(e)}>
+                            <label>Email</label>
+                            <input type={"email"}
+                                   name={"email"}
+                                   autoFocus={true}
+                                   autoComplete={"email-address"}
+                                   value={email}
+                                   required={true}
+                                   onChange={(e) => handleInput(e)}
+                            ></input>
+                            <label>Password</label>
+                            <input type={"password"}
+                                   name={"password"}
+                                   autoComplete={"current-password"}
+                                   value={password}
+                                   required={true}
+                                   onChange={(e) => handleInput(e)}
+                            ></input>
+                            <button type={"submit"} className={styles.btn_submit}>login</button>
+                        </form>
+                        <h4>No Account? Register <Link href={"/register"}>here</Link></h4>
                     </div>
                 </div>
             </div>
+            {isLoading && (<Spinner/>)}
         </>
     );
 }

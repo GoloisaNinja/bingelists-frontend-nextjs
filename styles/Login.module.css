@@ -1,11 +1,7 @@
-.container {
+.login_container {
+  width: 100%;
+  height: auto;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  min-height: 100vh;
 }
 
 .bgimg {
@@ -20,6 +16,7 @@
   background: url("../public/images/lou.webp") center center no-repeat;
   background-size: cover;
   opacity: 0.25;
+  z-index: -1;
 }
 
 .form_container {
@@ -27,6 +24,7 @@
   z-index: 2;
 }
 .form_container > h1 {
+  text-align: center;
   font-size: 8rem;
   line-height: 1.2;
   margin-bottom: 4rem;

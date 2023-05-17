@@ -1,0 +1,64 @@
+.selectors_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchbar {
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.filters_container {
+  margin-top: 2rem;
+}
+.filters_container > select:first-child {
+  margin-right: 2rem;
+}
+.filters_container > select {
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.filters_btn_group {
+  display: flex;
+  margin-top: 2rem;
+}
+.filters_btn_group > button:first-child {
+  background: #9136C9;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  margin-right: 2rem;
+  padding: 1rem 1.5rem;
+}
+.filters_btn_group > button:first-child:hover {
+  background: #7a2da9;
+}
+.filters_btn_group > button:last-child {
+  background: #c94c36;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  padding: 1rem 1.5rem;
+}
+.filters_btn_group > button:last-child:hover {
+  background: #a9402d;
+}
+.filters_btn_group > button {
+  display: inline-flex;
+  width: max-content;
+}
+
+/*# sourceMappingURL=Selectors.module.css.map */

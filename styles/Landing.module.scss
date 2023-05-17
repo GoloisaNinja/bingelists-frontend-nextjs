@@ -66,6 +66,7 @@
   @include colored_span($--application-yellow);
 }
 .empty_list {
+  margin-top: 4rem;
   font-size: 5rem;
   line-height: 1;
 }
