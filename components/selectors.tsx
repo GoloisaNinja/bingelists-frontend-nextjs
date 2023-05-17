@@ -36,8 +36,9 @@ const Selectors: React.FC<SelectorsProps> = (props) => {
         router.push(props.basePath + `?page=${page}`, undefined, {scroll: false}).then();
     }
     const applySearchTerm = (query: string) => {
+        let normalizedQ = query.toLowerCase();
         router.replace(props.basePath + "?page=1" + props.pathParams, undefined, {scroll: false}).then(() => {
-            let validTitles = props.titles.filter((title) => title.title.toLowerCase().includes(query));
+            let validTitles = props.titles.filter((title) => title.title.toLowerCase().includes(normalizedQ));
             props.setTitles(validTitles.slice(skip, skip + limit))
         });
     }
