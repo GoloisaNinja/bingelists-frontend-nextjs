@@ -48,7 +48,6 @@ export default function Login(): JSX.Element {
                 dispatch(authenticate(user));
                 await dispatchLoadingMinifiedBingeLists(user.token.token);
                 await dispatchLoadingMinifiedFavorites(user.token.token);
-                setIsLoading(false);
                 router.push("/trending/landing").then(() => {
                     dispatchAlert("success", "logged in!");
                 });

@@ -1,13 +1,12 @@
 .footer_container {
-  background: black;
+  background: #242424;
+  margin-top: 8rem;
 }
 
 .footer_grid {
   display: grid;
   grid-template-areas: "links personal" "logo logo" "copyright copyright";
   max-width: 800px;
-  margin-top: 8rem;
-  background: #171717;
 }
 @media (max-width: 500px) {
   .footer_grid {
@@ -17,7 +16,7 @@
 
 .logo {
   grid-area: logo;
-  padding-left: 0.5rem;
+  padding-left: 1.5rem;
 }
 
 .links_common, .personalLinks, .links {

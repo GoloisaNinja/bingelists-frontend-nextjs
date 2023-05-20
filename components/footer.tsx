@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from "next/image";
 import {FaRegCopyright, FaHeart} from "react-icons/fa";
-import Logo from '@/public/images/footer.webp';
+import Logo from '@/public/images/blFooterLogo.webp';
 import styles from '@/styles/Footer.module.scss';
 export default function Footer() {
     const currentYear = new Date().getFullYear();
