@@ -35,7 +35,7 @@ const BingeListCard:React.FC<BingeListCardProps> = (props) => {
                 {isOwner && (
                     <button
                         className={styles.invite_btn}
-                        onClick={() => router.push(`/lists/invite/${listId}`)}
+                        onClick={() => router.push(`/lists/invite/${listId}?name=${name}`)}
                     >Invite</button>
                 )}
             </div>

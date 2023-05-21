@@ -75,6 +75,7 @@
 .links_container .profile_link {
   font-family: monospace;
   font-weight: 700;
+  color: white;
   background: #9136C9;
   border-radius: 50%;
   padding: 0.8rem 1.4rem;

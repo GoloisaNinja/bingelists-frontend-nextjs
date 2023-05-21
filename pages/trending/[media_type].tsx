@@ -54,9 +54,11 @@ export default function TrendingPage(): JSX.Element {
                         <button className={styles.btn_trending_clean}>Back To Trending</button>
                     </Link>
                 </div>
-                <MediaGrid>
-                    {respData.map((media) => <MediaCard key={media.id} details={media} />)}
-                </MediaGrid>
+                {respData.length > 0 && (
+                    <MediaGrid>
+                        {respData.map((media) => <MediaCard key={media.id} details={media} />)}
+                    </MediaGrid>
+                )}
                 <div className={styles.see_more}>
                     {currentPage <= 1 ? null : (
                         <Link href={`/trending/${media_type}?page=${prevPage}`}><span className={styles.blue_span}>{`< Prev`}</span> Page</Link>
