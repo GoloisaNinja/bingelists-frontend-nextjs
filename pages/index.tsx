@@ -8,10 +8,19 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Binge Lists | Landing Page - Create Binge Lists for Movies and Tv!</title>
-                <meta name="description" content="BingeLists | Share movie and tv binge lists!"/>
+                <title>BingeLists | Landing Page - Create Binge Lists for Movies and Tv!</title>
+                <meta name="description" content="BingeLists | The app that lets you share movie and tv binge lists!"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <link rel="icon" href="/favicon.ico"/>
+                <link rel="icon" href="/images/blFooterLogo.webp"/>
+                <meta name="og:title" content="BingeLists | Create Binge Lists for Movies and Tv!" />
+                <meta name="og:description" content="BingeLists | The app that lets you share movie and tv binge lists!" />
+                <meta name="og:imgae" content="https://res.cloudinary.com/jcodescms/image/upload/v1685036911/BingeLists/bl_noimage_backdrop_dseyap.webp" />
+                <meta name="og:url" content="https://bingelists.app" />
+                <meta name="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="BingeLists | Create Binge Lists for Movies and Tv!" />
+                <meta name="twitter:description" content="BingeLists | The app that lets you share movie and tv binge lists!" />
+                <meta name="twitter:image" content="https://res.cloudinary.com/jcodescms/image/upload/v1685036911/BingeLists/bl_noimage_backdrop_dseyap.webp" />
             </Head>
             <div className={styles.page_container}>
                 <header className={styles.header}>
