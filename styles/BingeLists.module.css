@@ -65,6 +65,7 @@
 
 .bingelists_create {
   padding: 0 2rem;
+  margin-top: 4rem;
 }
 .bingelists_create > button:first-child {
   background: #9136C9;

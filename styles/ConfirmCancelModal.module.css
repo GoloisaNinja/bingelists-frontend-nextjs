@@ -8,6 +8,7 @@
   background: #132748;
   z-index: 1001;
   padding: 2rem;
+  min-width: 325px;
   max-width: 450px;
   border-bottom: 5px solid #c94c36;
 }

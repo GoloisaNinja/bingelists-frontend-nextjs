@@ -1,16 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {Invite} from "@/utils/inviteInterface";
 import {RootState} from "@/rootReducer";
 
-interface Invite {
-    id: string,
-    bingeListId: string,
-    bingeListName: string,
-    invitedByName: string,
-    invitedById: string,
-    invitedUserName: string,
-    invitedUserId: string,
-    message: string,
-}
 interface Token {
     _id: string,
     isExpired: boolean,
@@ -18,6 +9,7 @@ interface Token {
     token: string,
     user: string,
 }
+
 export interface User {
     _id: string,
     name: string,
@@ -60,9 +52,16 @@ export const authSlice = createSlice({
         logout: (state) => {
             state = initialState;
             return state;
+        },
+        processInvite: (state, {payload}: PayloadAction<string>) => {
+            state.invites = state.invites.filter((invite) => invite._id !== payload)
         }
     }
 })
 
-export const { authenticate, logout } = authSlice.actions;
+export const {
+    authenticate,
+    logout,
+    processInvite
+} = authSlice.actions;
 export const authSelector = (state: RootState) => state.auth;

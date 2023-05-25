@@ -10,6 +10,8 @@ import Spinner from "@/components/spinner";
 import {IBingeListCard} from "@/utils/bingeListInterface";
 import styles from "@/styles/BingeLists.module.scss";
 import BingeListCard from "@/components/BingeListsPageComponents/BingeListCard";
+import PendingInvites from "@/components/BingeListsPageComponents/PendingInvites";
+import ReceivedInvites from "@/components/BingeListsPageComponents/ReceivedInvites";
 import ModalWrapper from "@/components/modalWrapper";
 import ConfirmCancelModal from "@/components/confirmCancelModal";
 export default function BingeLists():JSX.Element {
@@ -43,6 +45,10 @@ export default function BingeLists():JSX.Element {
         } else {
             newListContainer.classList.add(isActiveClass);
         }
+    }
+
+    const manualMutate = () => {
+        mutate(BINGE_BASE_URL + "/bingelists");
     }
 
     const listCreateControlFlow = async (decision: boolean) => {
@@ -120,6 +126,8 @@ export default function BingeLists():JSX.Element {
                     <h1>Your</h1>
                     <h1>BingeLists.</h1>
                 </div>
+                <PendingInvites />
+                <ReceivedInvites mutate={manualMutate}/>
                 <div className={styles.bingelists_create}>
                     {createNew ? <button onClick={() => handleCreateToggle()}>close create new</button> : <button onClick={() => handleCreateToggle()}>+ create new list</button>}
                     <div id={"nl_form_container"} className={styles.bingelists_nl_form_container}>

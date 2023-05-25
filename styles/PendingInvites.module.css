@@ -1,0 +1,108 @@
+.pending_container {
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.invites_header {
+  display: flex;
+  align-items: center;
+}
+.invites_header > h3:first-child {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+.invites_header > button > svg {
+  font-size: 3rem;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+  background: #C9C236;
+  color: black;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.pending_table {
+  max-width: 800px;
+  display: none;
+}
+.pending_table.show {
+  display: inline-block;
+}
+.pending_table thead > tr > th {
+  font-size: 1.6rem;
+  color: #366fc9;
+  text-align: left;
+}
+.pending_table thead > tr > th:not(:last-child) {
+  padding-right: 2rem;
+}
+.pending_table tbody > tr > td {
+  font-size: 1.4rem;
+  padding-top: 1.5rem;
+}
+.pending_table tbody > tr > td:not(:last-child) {
+  padding-right: 2rem;
+}
+
+.invite_action_acceptbtn {
+  background: #366fc9;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  width: 100%;
+}
+.invite_action_acceptbtn:hover {
+  background: #2d5da9;
+}
+
+.invite_action_declinebtn {
+  background: #c94c36;
+  color: white;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  width: 100%;
+}
+.invite_action_declinebtn:hover {
+  background: #a9402d;
+}
+
+.invite_showdetails_btn {
+  background: #C9C236;
+  color: black;
+  border-radius: 5px;
+  padding: 2rem 3rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  width: 100%;
+}
+.invite_showdetails_btn:hover {
+  background: #a9a32d;
+}
+
+.blue_span {
+  color: #366fc9;
+}
+
+/*# sourceMappingURL=PendingInvites.module.css.map */

@@ -9,6 +9,7 @@
 }
 .bingelists_create {
   padding: 0 2rem;
+  margin-top: 4rem;
   >button:first-child {
     @include basicbtn($--application-purple, white);
     margin-bottom: 2rem;

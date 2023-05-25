@@ -39,6 +39,7 @@
   background: $--application-darkblue;
   z-index: 1001;
   padding: 2rem;
+  min-width: 325px;
   max-width: 450px;
   border-bottom: 5px solid $--application-darktomato;
   > h4 {

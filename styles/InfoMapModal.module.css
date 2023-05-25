@@ -11,29 +11,28 @@
   min-width: 325px;
   max-width: 450px;
   border-bottom: 5px solid #c94c36;
-  min-width: 350px;
 }
 .modal_container > h4 {
   font-size: 2.2rem;
   margin-bottom: 5rem;
 }
-.modal_container > label {
-  font-size: 2.2rem;
-  margin-bottom: 4rem;
+.modal_container > div {
+  margin-bottom: 2rem;
 }
-.modal_container > select {
-  border: none;
-  font-size: 1.6rem;
-  padding: 1rem;
-  margin-bottom: 4rem;
-  cursor: pointer;
+.modal_container > div > p:first-child {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.modal_container > div > p:last-child {
+  font-size: 1.4rem;
 }
 
-.btn_container {
+.btngroup {
   display: flex;
   align-items: stretch;
+  margin-top: 2rem;
 }
-.btn_container > button:first-child {
+.btngroup > button:first-child {
   background: #366fc9;
   color: white;
   border-radius: 5px;
@@ -47,10 +46,10 @@
   border-radius: 0;
   margin-right: 3rem;
 }
-.btn_container > button:first-child:hover {
+.btngroup > button:first-child:hover {
   background: #2d5da9;
 }
-.btn_container > button:last-child {
+.btngroup > button:last-child {
   background: #c94c36;
   color: white;
   border-radius: 5px;
@@ -63,8 +62,8 @@
   transition: all 0.4s ease-in-out;
   border-radius: 0;
 }
-.btn_container > button:last-child:hover {
+.btngroup > button:last-child:hover {
   background: #a9402d;
 }
 
-/*# sourceMappingURL=AddRemoveMediaModal.module.css.map */
+/*# sourceMappingURL=InfoMapModal.module.css.map */

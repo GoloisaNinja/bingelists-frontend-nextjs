@@ -35,7 +35,8 @@
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
-.btngroup > button:first-child {
+
+.viewList_btn {
   background: #9136C9;
   color: white;
   border-radius: 5px;
@@ -48,10 +49,11 @@
   transition: all 0.4s ease-in-out;
   padding: 1rem 1.5rem;
 }
-.btngroup > button:first-child:hover {
+.viewList_btn:hover {
   background: #7a2da9;
 }
-.btngroup > button:last-child {
+
+.invite_btn {
   background: #c94c36;
   color: white;
   border-radius: 5px;
@@ -65,7 +67,7 @@
   padding: 1rem 1.5rem;
   margin-left: 2rem;
 }
-.btngroup > button:last-child:hover {
+.invite_btn:hover {
   background: #a9402d;
 }
 

@@ -54,7 +54,13 @@ export default function Login(): JSX.Element {
             }
         } catch (e: any) {
             setIsLoading(false);
-            dispatchAlert("danger", e.message);
+            let alertMessage = e.message;
+            if (e.hasOwnProperty("response")) {
+                if (e.response.data) {
+                    alertMessage = e.response.data.message;
+                }
+            }
+            dispatchAlert("danger", alertMessage);
         }
 
     }

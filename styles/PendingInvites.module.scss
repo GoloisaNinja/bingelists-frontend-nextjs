@@ -1,0 +1,81 @@
+@import "variables";
+@import "mixins";
+
+.pending_container {
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+}
+.invites_header {
+  display: flex;
+  align-items: center;
+  > h3:first-child {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+  > button {
+    > svg {
+      font-size: 3rem;
+      margin-left: 2rem;
+      margin-bottom: 1.5rem;
+      background: $--application-yellow;
+      color: black;
+      border-radius: 5px;
+      padding: .5rem;
+    }
+  }
+}
+
+.pending_table {
+  max-width: 800px;
+  display: none;
+  &.show {
+    display: inline-block;
+  }
+  & thead {
+    > tr {
+      > th {
+        font-size: 1.6rem;
+        color: $--application-blue;
+        text-align: left;
+      }
+      > th:not(:last-child) {
+        padding-right: 2rem;
+      }
+    }
+  }
+  & tbody {
+    > tr {
+      > td {
+        font-size: 1.4rem;
+        padding-top: 1.5rem;
+      }
+      > td:not(:last-child) {
+        padding-right: 2rem;
+      }
+    }
+  }
+}
+
+.invite_action_acceptbtn {
+  @include basicbtn($--application-blue, white);
+  padding: .5rem;
+  font-size: 1.4rem;
+  width: 100%;
+}
+
+.invite_action_declinebtn {
+  @include basicbtn($--application-darktomato, white);
+  padding: .5rem;
+  font-size: 1.4rem;
+  width: 100%;
+}
+.invite_showdetails_btn {
+  @include basicbtn($--application-yellow, black);
+  padding: .5rem;
+  font-size: 1.4rem;
+  width: 100%;
+}
+
+.blue_span {
+  @include colored_span($--application-blue);
+}

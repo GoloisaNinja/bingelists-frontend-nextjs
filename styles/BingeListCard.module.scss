@@ -32,15 +32,15 @@
 .btngroup {
   margin-top: 3rem;
   margin-bottom: 3rem;
-  >button:first-child {
-    @include basicbtn($--application-purple, white);
-    padding: 1rem 1.5rem;
-  }
-  >button:last-child {
-    @include basicbtn($--application-darktomato, white);
-    padding: 1rem 1.5rem;
-    margin-left: 2rem;
-  }
+}
+.viewList_btn {
+  @include basicbtn($--application-purple, white);
+  padding: 1rem 1.5rem;
+}
+.invite_btn {
+  @include basicbtn($--application-darktomato, white);
+  padding: 1rem 1.5rem;
+  margin-left: 2rem;
 }
 .card_bottom_container {
   display: flex;

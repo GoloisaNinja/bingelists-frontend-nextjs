@@ -30,8 +30,8 @@ export default function FavoritesPage() {
         (
             <div className={styles.landing_container}>
                 <div className={styles.hero_intro_container}>
-                    <h1>{`${name}'s`}</h1>
-                    <h1><span className={styles.blue_span}>Favorites</span>.</h1>
+                    <h1>Favorites for</h1>
+                    <h1><span className={styles.blue_span}>{name}</span>.</h1>
                     <Link href={"/trending/landing"}>
                         <button className={styles.btn_trending_clean}>See Trending</button>
                     </Link>

@@ -57,9 +57,14 @@ export default function Register(): JSX.Element {
                 })
             }
         } catch(e: any) {
-            console.log(e)
+            let alertMessage = e.message;
+            if (e.hasOwnProperty("response")) {
+                if (e.response.data) {
+                    alertMessage = e.response.data.message;
+                }
+            }
             setIsLoading(false);
-            dispatchAlert("danger", e.message)
+            dispatchAlert("danger", alertMessage)
         }
     }
     return (
@@ -74,10 +79,11 @@ export default function Register(): JSX.Element {
                         <h1><span className={styles.span_blue}>B</span>inge <span className={styles.span_yellow}>R</span>egister</h1>
                         <div className={styles.form_wrapper}>
                             <form className={styles.login_form} onSubmit={(e) => handleRegistration(e)}>
-                                <label>Username</label>
+                                <label>Username (max length 10 chars)</label>
                                 <input type={"text"}
                                        name={"username"}
                                        autoComplete={"username"}
+                                       maxLength={10}
                                        required={true}
                                        value={username}
                                        onChange={(e) => setFormData({...formData, [e.target.name]: e.target.value})}

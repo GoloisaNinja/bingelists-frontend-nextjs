@@ -18,7 +18,7 @@ export default function Footer() {
                     <Link href={"/register"}>Register</Link>
                 </div>
                 <div className={styles.copyright}>
-                    <p>Made with <span className={styles.pink_span}><FaHeart /></span></p>
+                    <p>Made with <span className={styles.pink_span}><FaHeart /></span> by Jon Collins</p>
                     <p>BingeLists.app <FaRegCopyright /> <span className={styles.yellow_span}>{currentYear}</span></p>
                 </div>
                 <div className={styles.personalLinks}>
