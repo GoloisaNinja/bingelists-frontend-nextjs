@@ -6,6 +6,8 @@
 .searchbar {
   padding: 1rem;
   font-size: 1.8rem;
+  border: 1px solid #919191;
+  border-radius: 0;
 }
 
 .filters_container {
@@ -20,10 +22,12 @@
 .select_wrap {
   max-width: max-content;
   position: relative;
+  border: 1px solid #919191;
 }
 .select_wrap > select {
   padding: 1rem;
   font-size: 1.8rem;
+  color: white;
   border-radius: 0;
   appearance: none;
   background: none;
