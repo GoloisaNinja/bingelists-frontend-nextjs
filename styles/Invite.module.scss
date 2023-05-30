@@ -25,6 +25,15 @@
 .blue_span {
   @include colored_span($--application-blue);
 }
+.invite_search {
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem;
+  font-size: 1.8rem;
+  background: #363636;
+  border: none;
+}
 .table_container {
   margin: 4rem 0;
   max-width: 800px;
@@ -68,6 +77,7 @@
   height: 125px;
   background: #363636;
   font-family: 'Prompt', sans-serif;
+  font-size: 1.8rem;
   padding: 1rem;
   border: 1px solid $--application-blue;
 }

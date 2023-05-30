@@ -166,6 +166,7 @@ export interface ILocationResult {
     link: string,
     flatrate?: IProvider[],
     buy?: IProvider[],
+    ads?: IProvider[],
     free?: IProvider[],
 }
 

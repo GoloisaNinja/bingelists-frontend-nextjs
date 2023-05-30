@@ -61,7 +61,12 @@ export default function SearchPage(): JSX.Element {
             handleSearch().then();
         }
     }, [query])
-    return loading ? (<Spinner />) : (
+    useEffect(() => {
+        if (!isAuthenticated) {
+            router.push("/login").then();
+        }
+    },[isAuthenticated])
+    return loading || !isAuthenticated ? (<Spinner />) : (
         <div className={styles.search_page_container}>
             <div className={styles.search_hero}>
                 <div className={styles.search_bgimg}></div>

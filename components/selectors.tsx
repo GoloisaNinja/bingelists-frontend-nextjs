@@ -70,13 +70,16 @@ const Selectors: React.FC<SelectorsProps> = (props) => {
                 onChange={(e) => applySearchTerm(e.target.value)}
             ></input>
             <div className={styles.filters_container}>
+                <div className={styles.select_wrap}>
                 <select
                     value={filterByType}
                     onChange={(e) => setFilterByType(e.target.value)}>
                     <option value={""}>filter by type</option>
                     {mTypes.map((type, index) => <option key={index.toString() + type}>{type}</option>)}
                 </select>
+                </div>
                 {filterByType !== "" && (
+                    <div className={styles.select_wrap}>
                     <select
                         value={filterByGenreId}
                         onChange={(e) => setFilterByGenreId(parseInt(e.target.value))}>
@@ -84,6 +87,7 @@ const Selectors: React.FC<SelectorsProps> = (props) => {
                         {gTypes.get(filterByType)!.map((genre) => <option key={genre[0].toString() + genre[1]}
                                                                           value={genre[0]}>{genre[1]}</option>)}
                     </select>
+                    </div>
                 )}
             </div>
             <div className={styles.filters_btn_group}>

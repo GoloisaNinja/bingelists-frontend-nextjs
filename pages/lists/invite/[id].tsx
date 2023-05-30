@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo, useEffect} from 'react';
 import axios from 'axios';
 import {useRouter} from "next/router";
 import {useSelector, useDispatch} from "react-redux";
@@ -38,15 +38,23 @@ export default function InviteList() {
     }
     const [inviteData, setInviteData] = useState<IInviteData>(baseFormData)
     const [showModal, setShowModal] = useState<boolean>(false)
+    const [searchString, setSearchString] = useState<string>("")
+    const [filteredUsers, setFilteredUsers] = useState<IPublicUser[]>([]);
     const s: ServerAuthProps = {
         method: "GET",
         url: "/user/users",
         body: {},
     }
     const {data, isLoading}: any = useAuthRouteForResponseOrRedirect(s)
-    let cleanUsers:IPublicUser[] = [];
+
+    const initializeUsers = ():IPublicUser[] => {
+        return []
+    }
+
+    let cleanUsers = useMemo(():IPublicUser[] => initializeUsers(), []);
+
     if (data) {
-        cleanUsers = data.data.filter((user:IPublicUser) => user._id !== _id);
+        cleanUsers = data.data;
     }
     const resetInviteData = () => {
         setInviteData(baseFormData)
@@ -91,6 +99,18 @@ export default function InviteList() {
         setShowModal(false)
     }
 
+    const handleUserSearch = (search: string) => {
+        setSearchString(search);
+        let filtered = cleanUsers.filter((user) => user.name.includes(search));
+        setFilteredUsers(filtered);
+    }
+
+    useEffect(() => {
+        if (cleanUsers !== undefined && cleanUsers.length > 0) {
+            setFilteredUsers(cleanUsers)
+        }
+    }, [cleanUsers])
+
     return isLoading ? (<Spinner/>) : (
         <>
             <div className={styles.invite_page_container}>
@@ -104,6 +124,13 @@ export default function InviteList() {
                 {cleanUsers.length > 0 ? (
                     <div className={styles.invite_main}>
                         <h2><span className={styles.blue_span}>Step 1:</span> Choose a user</h2>
+                        <input
+                            className={styles.invite_search}
+                            autoFocus={true}
+                            placeholder={"search by username"}
+                            value={searchString}
+                            onChange={(e) => handleUserSearch(e.target.value)}
+                        ></input>
                         <div className={styles.table_container}>
                             <table className={styles.invite_table}>
                                 <thead>
@@ -114,7 +141,7 @@ export default function InviteList() {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {cleanUsers.map((user: IPublicUser) => (
+                                {filteredUsers.map((user: IPublicUser) => (
                                     <tr key={user._id}>
                                         <td>
                                             <input
@@ -137,7 +164,7 @@ export default function InviteList() {
                         maxLength={200}
                         value={inviteData.message}
                         onChange={(e) => setInviteData({...inviteData, message: e.target.value})}
-                        placeholder={"ex. Hey Wifers! This is an invite to our bingelist! - from your adoring hubs"}
+                        placeholder={"ex. Hey <friend>, this is <you>! I am inviting you to join my BingeList dedicated to trashy reality TV!"}
                     >
                     </textarea>
                         </div>

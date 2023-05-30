@@ -107,6 +107,7 @@
 }
 .profile_dropdown > button {
   margin-left: 0;
+  color: white;
 }
 .profile_dropdown > button:hover {
   background: #366fc9;

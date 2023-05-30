@@ -1,10 +1,10 @@
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useState, useEffect} from "react";
 import Head from 'next/head';
 import Link from "next/link";
 import {useRouter} from "next/router";
 import axios, {AxiosResponse} from "axios";
-import {useDispatch} from "react-redux";
-import {authenticate, User} from "@/features/auth/authSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {authenticate, authSelector} from "@/features/auth/authSlice";
 import styles from '@/styles/Login.module.scss';
 import {BINGE_BASE_URL} from "@/constants";
 import {useDispatchAlert} from "@/utils/alertFactory";
@@ -13,6 +13,7 @@ import Spinner from "@/components/spinner";
 
 export default function Login(): JSX.Element {
     const dispatch = useDispatch();
+    const {isAuthenticated} = useSelector(authSelector);
     const {dispatchLoadingMinifiedBingeLists, dispatchLoadingMinifiedFavorites} = useMinifiedListLoaders();
     const {dispatchAlert} = useDispatchAlert();
     const router = useRouter();
@@ -64,7 +65,12 @@ export default function Login(): JSX.Element {
         }
 
     }
-    return (
+    useEffect(() => {
+        if (isAuthenticated) {
+            router.push("/trending/landing").then()
+        }
+    },[])
+    return isAuthenticated ? <Spinner /> : (
         <>
             <Head>
                 <title>Binge Lists | Login Page</title>

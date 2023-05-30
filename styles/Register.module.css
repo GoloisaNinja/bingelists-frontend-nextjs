@@ -49,6 +49,10 @@
   color: #36C9C2;
 }
 
+.registration_disclaimer {
+  font-size: 1.4rem;
+}
+
 .checkbox {
   margin-right: auto;
   width: 25px;

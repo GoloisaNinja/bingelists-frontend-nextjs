@@ -1,8 +1,8 @@
-import {FormEvent, useState} from 'react';
+import {FormEvent, useState, useEffect} from 'react';
 import {useRouter} from "next/router";
 import {useDispatchAlert} from "@/utils/alertFactory";
-import {useDispatch} from "react-redux";
-import {authenticate} from "@/features/auth/authSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {authenticate, authSelector} from "@/features/auth/authSlice";
 import {useMinifiedListLoaders} from "@/utils/initialListLoaders";
 import axios from "axios";
 import {BINGE_BASE_URL} from "@/constants";
@@ -12,6 +12,7 @@ import Spinner from "@/components/spinner";
 import styles from '@/styles/Register.module.scss';
 export default function Register(): JSX.Element {
     const {dispatchAlert} = useDispatchAlert();
+    const {isAuthenticated} = useSelector(authSelector);
     const dispatch = useDispatch();
     const router = useRouter();
     const { dispatchLoadingMinifiedBingeLists, dispatchLoadingMinifiedFavorites} = useMinifiedListLoaders();
@@ -67,7 +68,12 @@ export default function Register(): JSX.Element {
             dispatchAlert("danger", alertMessage)
         }
     }
-    return (
+    useEffect(() => {
+        if (isAuthenticated) {
+            router.push("/trending/landing").then()
+        }
+    }, [])
+    return isAuthenticated ? (<Spinner />) : (
         <>
             <Head>
                 <title>Binge Lists | Register Page</title>
@@ -122,7 +128,7 @@ export default function Register(): JSX.Element {
                                        value={appearPublic.toString()}
                                        onChange={(e) => setFormData({...formData, [e.target.name]: e.target.checked})}
                                 ></input>
-                                <p>*Appearing public allows other users to see your username and invite you to BingeLists. Only your username can be seen. This can be changed later in profile settings.</p>
+                                <p className={styles.registration_disclaimer}>*Appearing public allows other users to see your username and invite you to BingeLists. Only your username can be seen. This can be changed later in profile settings.</p>
                                 <button className={styles.btn_submit}
                                         type={"submit"}
                                 >register</button>

@@ -16,6 +16,7 @@ export interface User {
     email: string,
     token: Token,
     invites: Invite[],
+    isPrivate: boolean,
     createdAt: string,
     isAuthenticated: boolean,
 }
@@ -32,6 +33,7 @@ const initialState: User = {
         user: "",
     },
     invites: [],
+    isPrivate: true,
     createdAt: "",
     isAuthenticated: false,
 }
@@ -46,8 +48,15 @@ export const authSlice = createSlice({
             state.email = payload.email;
             state.token = payload.token;
             state.invites = payload.invites;
+            state.isPrivate = payload.isPrivate;
             state.createdAt = payload.createdAt;
             state.isAuthenticated = true;
+        },
+        changeName: (state, {payload}: PayloadAction<User>) => {
+            state.name = payload.name;
+        },
+        changePrivacy: (state, {payload}: PayloadAction<User>) => {
+            state.isPrivate = payload.isPrivate;
         },
         logout: (state) => {
             state = initialState;
@@ -62,6 +71,8 @@ export const authSlice = createSlice({
 export const {
     authenticate,
     logout,
-    processInvite
+    processInvite,
+    changePrivacy,
+    changeName,
 } = authSlice.actions;
 export const authSelector = (state: RootState) => state.auth;

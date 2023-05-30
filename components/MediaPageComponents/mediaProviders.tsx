@@ -32,6 +32,22 @@ const MediaProviders:React.FC<MediaProvidersProps> = (props) => {
                     </div>
                 </div>
             )}
+            {usProviders && usProviders.ads && (
+                <div className={styles.provider_container}>
+                    <h3>With Ads</h3>
+                    <div className={styles.provider_grid}>
+                        {usProviders.ads.map((provider: IProvider) => <ProviderCard key={nanoid(5)} data={provider} />)}
+                    </div>
+                </div>
+            )}
+            {usProviders && usProviders.free && (
+                <div className={styles.provider_container}>
+                    <h3>Free</h3>
+                    <div className={styles.provider_grid}>
+                        {usProviders.free.map((provider: IProvider) => <ProviderCard key={nanoid(5)} data={provider} />)}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

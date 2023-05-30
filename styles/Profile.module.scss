@@ -1,0 +1,72 @@
+@import "mixins";
+@import "variables";
+
+.profile_container {
+  display: flex;
+  flex-direction: column;
+}
+.profile_hero {
+  @include page_hero;
+}
+.profile_bg {
+  @include soda_popcorn_hero;
+}
+.profile_actions_container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 4rem;
+  > hr {
+    margin-bottom: 2rem;
+  }
+  > h2 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+  }
+  > h3 {
+    font-size: 2rem;
+  }
+  @media (max-width: 500px) {
+    padding: 0 2rem;
+  }
+}
+.profile_current_value {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: $--application-cyan;
+  opacity: .85;
+  font-style: italic;
+}
+.profile_input {
+  display: inline-flex;
+  max-width: 500px;
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.profile_btn {
+  @include basicbtn($--application-blue, white);
+  margin: 2rem 0;
+  max-width: max-content;
+  &.isDisabled {
+    pointer-events: none;
+    opacity: .5;
+  }
+}
+.profile_disclaimer_heading {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.profile_disclaimer {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  max-width: 500px;
+}
+
+.blue_span {
+  @include colored_span($--application-blue);
+}
+.yellow_span {
+  @include colored_span($--application-yellow);
+}

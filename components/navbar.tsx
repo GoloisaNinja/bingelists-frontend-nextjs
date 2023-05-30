@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
                     </button>
                     <div id={"profile_dropdown"} className={styles.profile_dropdown}>
                         <button className={styles.links} onClick={() => handleDropLinks("/favorites")}>Favorites</button>
-                        <button className={styles.links} onClick={() => handleDropLinks("/trending/landing")}>Profile</button>
+                        <button className={styles.links} onClick={() => handleDropLinks("/profile")}>Profile</button>
                         <button className={styles.links} onClick={() => handleDropLinks("logout")}>Logout</button>
                     </div>
                 </div>
@@ -143,7 +143,7 @@ const Navbar: React.FC = () => {
                     <Link className={styles.links} href={"/search"}>
                         <button onClick={() => handleHamburger()}>Search</button>
                     </Link>
-                    <Link className={styles.links} href={"/trending/landing"}>
+                    <Link className={styles.links} href={"/profile"}>
                         <button onClick={() => handleHamburger()}>Profile</button>
                     </Link>
                     <button className={styles.logout_link} onClick={() => handleHamburgerLogout()}>Logout</button>

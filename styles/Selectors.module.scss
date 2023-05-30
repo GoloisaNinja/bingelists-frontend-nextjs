@@ -7,17 +7,41 @@
 }
 .searchbar {
   padding: 1rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 .filters_container {
+  display: flex;
+  align-content: center;
   margin-top: 2rem;
-  > select:first-child {
+  > div:not(:last-child) {
     margin-right: 2rem;
   }
+}
+.select_wrap {
+  max-width: max-content;
+  position: relative;
   > select {
     padding: 1rem;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    border-radius: 0;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+    grid-area: select;
+    margin-right: 2rem;
   }
+}
+.select_wrap::after {
+  content: "";
+  width: 1.5rem;
+  height: 1rem;
+  background-color: $--application-blue;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  position: absolute;
+  top: 18px;
+  right: 8px;
+  z-index: -1;
 }
 .filters_btn_group {
   display: flex;

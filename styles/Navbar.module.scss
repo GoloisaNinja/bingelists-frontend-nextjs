@@ -104,6 +104,7 @@
   z-index: 1;
   > button {
     margin-left: 0;
+    color: white;
     &:hover {
       background: $--application-blue;
     }
