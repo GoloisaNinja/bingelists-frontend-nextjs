@@ -18,7 +18,7 @@ const MediaProviders:React.FC<MediaProvidersProps> = (props) => {
             {!usProviders && <h3>Currently no providers for this title...</h3>}
             {usProviders && usProviders.buy &&(
                 <div className={styles.provider_container}>
-                    <h3>Buy or Rent</h3>
+                    <h3 className={styles.provider_header}>Buy or Rent</h3>
                     <div className={styles.provider_grid}>
                         {usProviders.buy.map((provider: IProvider) => <ProviderCard key={nanoid(5)} data={provider} />)}
                     </div>
@@ -26,7 +26,7 @@ const MediaProviders:React.FC<MediaProvidersProps> = (props) => {
             )}
             {usProviders && usProviders.flatrate && (
                 <div className={styles.provider_container}>
-                    <h3>Stream</h3>
+                    <h3 className={styles.provider_header}>Stream</h3>
                     <div className={styles.provider_grid}>
                         {usProviders.flatrate.map((provider: IProvider) => <ProviderCard key={nanoid(5)} data={provider} />)}
                     </div>
@@ -34,7 +34,7 @@ const MediaProviders:React.FC<MediaProvidersProps> = (props) => {
             )}
             {usProviders && usProviders.ads && (
                 <div className={styles.provider_container}>
-                    <h3>With Ads</h3>
+                    <h3 className={styles.provider_header}>With Ads</h3>
                     <div className={styles.provider_grid}>
                         {usProviders.ads.map((provider: IProvider) => <ProviderCard key={nanoid(5)} data={provider} />)}
                     </div>
@@ -42,7 +42,7 @@ const MediaProviders:React.FC<MediaProvidersProps> = (props) => {
             )}
             {usProviders && usProviders.free && (
                 <div className={styles.provider_container}>
-                    <h3>Free</h3>
+                    <h3 className={styles.provider_header}>Free</h3>
                     <div className={styles.provider_grid}>
                         {usProviders.free.map((provider: IProvider) => <ProviderCard key={nanoid(5)} data={provider} />)}
                     </div>
