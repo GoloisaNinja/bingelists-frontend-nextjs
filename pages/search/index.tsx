@@ -22,26 +22,28 @@ export default function SearchPage(): JSX.Element {
         querystring = query;
     }
     const {token, isAuthenticated} = useSelector(authSelector);
-    const [titleSearch, setTitleSearch] = useState<string>(querystring);
+    //const [titleSearch, setTitleSearch] = useState<string>(querystring);
     const [movieSearchResults, setMovieSearchResults] = useState<IMediaCard[]>([]);
     const [tvSearchResults, setTvSearchResults] = useState<IMediaCard[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const handleQueryParam = (e: FormEvent) => {
         e.preventDefault();
-        const ts = titleSearch as string;
+        //const ts = titleSearch as string;
+        const searchEl:HTMLInputElement = document.querySelector("#titleSearch")!
+        const ts = searchEl.value;
         const encoded = encodeURI(ts);
         setLoading(true);
         router.replace(`/search?query=${encoded}`).then();
     }
     const handleSearch = async () => {
-        const url = BINGE_BASE_URL + `/search?query=${titleSearch}`;
+        const url = BINGE_BASE_URL + `/search?query=${querystring}`;
         API_HEADER.headers.Authorization = "Bearer " + token.token;
         try {
             const res = await axios.get(url, API_HEADER);
             setMovieSearchResults(res.data.data.movie.results)
             setTvSearchResults(res.data.data.tv.results);
-            setTitleSearch("");
         } catch (e: any) {
+            console.log(e);
             if (e.response.status === 403) {
                 router.push("/login").then(() => {
                     if (isAuthenticated) {
@@ -76,12 +78,11 @@ export default function SearchPage(): JSX.Element {
             <div className={styles.form_container}>
                 <form onSubmit={(e) => handleQueryParam(e)}>
                     <input
+                        id={"titleSearch"}
                         type={"text"}
                         name={"title"}
                         placeholder={"enter title to search for..."}
-                        value={titleSearch}
                         autoFocus={true}
-                        onChange={(e) => setTitleSearch(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && handleQueryParam(e)}/>
                     <button type={"submit"}>search</button>
                 </form>
