@@ -14,6 +14,9 @@
       padding: 1rem;
       width: 100%;
       background: #363636;
+      &::placeholder {
+        color: #bbb;
+      }
     }
     > button {
       @include basicbtn($--application-yellow, black);

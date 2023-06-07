@@ -14,6 +14,9 @@
   width: 100%;
   background: #363636;
 }
+.form_container > form > input::placeholder {
+  color: #bbb;
+}
 .form_container > form > button {
   background: #C9C236;
   color: black;

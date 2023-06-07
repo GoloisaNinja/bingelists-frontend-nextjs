@@ -10,6 +10,10 @@
   font-size: 1.8rem;
   border: 1px solid #919191;
   border-radius: 0;
+  background: #363636;
+  &::placeholder {
+    color: #bbb;
+  }
 }
 .filters_container {
   display: flex;
