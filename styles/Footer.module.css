@@ -32,6 +32,7 @@
 .links_common > a, .personalLinks > a, .links > a {
   font-size: 1.6rem;
   margin-top: 1.2rem;
+  color: white;
 }
 
 .links {

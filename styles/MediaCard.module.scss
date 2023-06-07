@@ -44,6 +44,7 @@
   > p:first-child {
     font-size: 1rem;
     margin-right: 1rem;
+    color: white;
   }
   > p:last-child {
     font-size: 2rem;
@@ -52,7 +53,7 @@
   }
 }
 .ratingvalue, .popvalue {
-  color: $--application-blue;
+  color: $--application-lightblue;
 }
 
 .ratingvalue .yellow_offset, .popvalue .yellow_offset {
@@ -68,6 +69,7 @@
   > p:first-child {
     font-size: 1.8rem;
     font-weight: 600;
+    color: white;
   }
 }
 .overview {
@@ -75,6 +77,7 @@
   grid-area: overview;
   font-size: 1rem;
   overflow: hidden;
+  color: white;
   -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
 }
