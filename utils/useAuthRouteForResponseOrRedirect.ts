@@ -26,7 +26,8 @@ const useAuthRouteForResponseOrRedirect:React.FC<ServerAuthProps> = (props):any 
     const { data, error, isLoading, mutate } = useSWR(BINGE_BASE_URL + props.url, fetcher);
     if (error) {
         if (error.hasOwnProperty("response")) {
-            if (error.response.status === 403) {
+            let location = window.location;
+            if (error.response.status === 403 && location.href !== 'https://bingelists.app/login') {
                 router.push("/login").then(() => {
                     if (isAuthenticated) {
                         dispatch(logout());

@@ -8,7 +8,7 @@ interface MediaTrailerProps {
     type: string,
 }
 const MediaTrailer:React.FC<MediaTrailerProps> = (props) => {
-    return (
+    return props.data && (
         <div className={styles.trailer_container}>
             <h2 className={styles[`header_${props.type}`]}>Trailer</h2>
             {props.data !== null ? (
