@@ -92,7 +92,7 @@ export default function MediaPage(): JSX.Element {
         setMediaDetailValuesBasedOnMediaType();
         trailer = getOfficialYouTubeTrailerFromVideos();
     }
-    return !isLoading ? (
+    return (!isLoading && Object.keys(resp).length) ? (
         <div className={styles.page_container}>
             <div className={styles.bg_container}>
                 <Image src={backdropImgSrc} alt={`backdrop image for ${media_title}`} fill={true} sizes={"100vw"}/>
