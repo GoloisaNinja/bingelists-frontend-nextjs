@@ -139,8 +139,8 @@
 .bingelist_card_grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 2rem;
-  padding: 0 2rem;
+  grid-gap: 1rem;
+  padding: 0 1rem;
   margin-top: 8rem;
 }
 @media (min-width: 600px) {

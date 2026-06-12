@@ -14,12 +14,7 @@
 }
 
 .categories_container {
-  padding: 0 2rem;
-}
-@media (min-width: 500px) {
-  .categories_container {
-    padding: 0 4rem;
-  }
+  padding: 0 1rem;
 }
 
 .categories_hero {
@@ -99,7 +94,6 @@
 @media (min-width: 650px) {
   .category_grid {
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
   }
 }
 @media (min-width: 850px) {

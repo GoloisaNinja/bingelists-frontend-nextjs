@@ -3,8 +3,9 @@
 .card_container {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  border-radius: 5px;
+  padding: .5rem;
+  //border-radius: 5px;
+  border-bottom: 5px solid gray;
 }
 .movie {
   //background: linear-gradient($--card-gradient-blue,#000000);

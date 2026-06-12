@@ -12,7 +12,7 @@ const MediaProviders:React.FC<MediaProvidersProps> = (props) => {
     const media_type = props.type;
     const providerReMap = new Map(Object.entries(props.data.results))
     const usProviders: ILocationResult = providerReMap.get("US");
-    return (
+    return usProviders && (
         <div className={styles.providers_container}>
             <h2 className={styles[`watch_header_${media_type}`]}>Where To Watch</h2>
             {!usProviders && <h3>Currently no providers for this title...</h3>}

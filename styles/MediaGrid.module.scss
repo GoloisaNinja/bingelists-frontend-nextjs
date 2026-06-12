@@ -1,10 +1,14 @@
 .media_grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 1.6rem;
+  grid-gap: 1rem;
   margin-top: 8rem;
+  padding: 1rem;
   margin-bottom: 8rem;
-  @media (min-width: 500px) {
+  @media (min-width: 200px) {
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 400px) {
     grid-template-columns: 1fr 1fr;
   }
   @media (min-width: 750px) {

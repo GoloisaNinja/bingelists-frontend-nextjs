@@ -31,17 +31,24 @@ export default function BingeListPage() {
 
     const limit = 20;
     const skip = limit * (parseInt(page) - 1);
+    const b: ServerAuthProps = {
+        method: "GET",
+        url: `/bingelist?id=${listId}`,
+        body: {},
+    }
     const s: ServerAuthProps = {
         method: "GET",
         url: urlToUse,
         body: {},
     }
+    const {data: allData, isLoading: titleLoading}: any = useAuthRouteForResponseOrRedirect(b);
     const {data, isLoading}: any = useAuthRouteForResponseOrRedirect(s);
     const initializeTitles = ():IBingeTitles => {
         return {name: "", titles: []};
     }
 
     let titles: IBingeTitles = useMemo(():IBingeTitles => initializeTitles(), [])
+    let allTitles: IBingeTitles = useMemo(():IBingeTitles => initializeTitles(), [])
 
     let totalPages = 0;
     let prevPage = 0;
@@ -52,6 +59,10 @@ export default function BingeListPage() {
         limit,
         typeFilter: filterType,
         genreFilter: filterGenre
+    }
+
+    if (allData) {
+        allTitles = allData.data
     }
 
     if (data) {
@@ -69,7 +80,7 @@ export default function BingeListPage() {
         }
     }, [page, titles, skip])
 
-    return isLoading ? (<Spinner/>) :
+    return (isLoading && titleLoading) ? (<Spinner/>) :
         (
             <div className={styles.landing_container}>
                 <div className={styles.hero_intro_container}>
@@ -80,6 +91,7 @@ export default function BingeListPage() {
                     </Link>
                     <Selectors
                         titles={titles.titles}
+                        allTitles={allTitles.titles}
                         basePath={`/lists/${listId}`}
                         pathParams={pathParam}
                         setTitles={setPaginatedTitles}

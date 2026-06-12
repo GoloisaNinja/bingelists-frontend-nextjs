@@ -5,6 +5,7 @@ import styles from "@/styles/Selectors.module.scss";
 
 interface SelectorsProps {
     titles: IListTitle[]
+    allTitles: IListTitle[]
     basePath: string
     pathParams: string
     setTitles: (titles: IListTitle[]) => void
@@ -14,7 +15,7 @@ interface SelectorsProps {
 const Selectors: React.FC<SelectorsProps> = (props) => {
     const router = useRouter();
     const page = router.query.page as string;
-
+    console.log(props.allTitles);
     const { skip, limit, typeFilter, genreFilter } = props.listData
 
     const [filterByType, setFilterByType] = useState<string>(typeFilter ? typeFilter : "");
@@ -59,7 +60,7 @@ const Selectors: React.FC<SelectorsProps> = (props) => {
             }
         }
     }
-    populateFilters(props.titles)
+    populateFilters(props.allTitles)
     return (
         <div className={styles.selectors_container}>
             <input
@@ -74,7 +75,7 @@ const Selectors: React.FC<SelectorsProps> = (props) => {
                 <select
                     value={filterByType}
                     onChange={(e) => setFilterByType(e.target.value)}>
-                    <option value={""}>filter by type</option>
+                    <option value={""} disabled={true} selected={true} hidden={true}>filter by type</option>
                     {mTypes.map((type, index) => <option key={index.toString() + type}>{type}</option>)}
                 </select>
                 </div>
@@ -83,7 +84,7 @@ const Selectors: React.FC<SelectorsProps> = (props) => {
                     <select
                         value={filterByGenreId}
                         onChange={(e) => setFilterByGenreId(parseInt(e.target.value))}>
-                        <option value={0}>filter by genre</option>
+                        <option value={0} disabled={true} selected={true} hidden={true}>filter by genre</option>
                         {gTypes.get(filterByType)!.map((genre) => <option key={genre[0].toString() + genre[1]}
                                                                           value={genre[0]}>{genre[1]}</option>)}
                     </select>

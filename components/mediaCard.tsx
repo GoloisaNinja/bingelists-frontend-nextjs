@@ -38,9 +38,9 @@ const MediaCard: React.FC<MediaCardProps> = (props)  => {
                 <div className={styles.card_info_container}>
                     <p>{mediaTitle}</p>
                 </div>
-                <div className={styles.overview}>
+                {/*<div className={styles.overview}>
                     <p>{props.details.overview}</p>
-                </div>
+                </div>*/}
             </div>
         </div>
         </Link>
