@@ -15,7 +15,7 @@
 }
 @media (min-width: 500px) {
   .hero_intro_container {
-    padding: 0 4rem;
+    padding: 0 2rem;
   }
 }
 .hero_intro_container > h1 {
@@ -59,7 +59,7 @@
 }
 @media (min-width: 500px) {
   .landing_hero {
-    padding: 0 4rem;
+    padding: 0 2rem;
   }
 }
 .landing_hero > h1 {

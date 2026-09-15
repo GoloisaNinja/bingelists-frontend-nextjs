@@ -67,7 +67,8 @@
   transition: all 0.5s ease-out;
 }
 
-.links_container > a, .links_container button {
+.links_container > a,
+.links_container button {
   margin-left: 2rem;
   font-size: 1.6rem;
   font-weight: 500;
@@ -126,7 +127,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 5rem;
+  margin-top: 4.4rem;
   height: 0;
   display: flex;
   flex-direction: column;
@@ -147,7 +148,7 @@
 }
 
 .auth_dropdown_container.isActive {
-  height: 450px;
+  height: 515px;
 }
 
 .drop_intro {

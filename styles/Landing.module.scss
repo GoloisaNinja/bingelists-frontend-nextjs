@@ -1,73 +1,73 @@
-@import "mixins";
-@import "variables";
+@import 'mixins';
+@import 'variables';
 .main_div {
-  position: relative;
+	position: relative;
 }
 .landing_container {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .hero_intro_container {
-  @include page_hero_nobg;
+	@include page_hero_nobg;
 }
 .landing_hero {
-  @include page_hero;
+	@include page_hero;
 }
 .landing_hero_bgimg {
-  @include soda_popcorn_hero;
+	@include soda_popcorn_hero;
 }
 .grid_intro {
-  @include basicHeader;
-  margin: 0;
-  padding: 0 2rem;
-  @media (min-width: 500px) {
-    padding: 0 4rem;
-  }
+	@include basicHeader;
+	margin: 0;
+	padding: 0 2rem;
+	@media (min-width: 500px) {
+		padding: 0 4rem;
+	}
 }
 .grid_intro_top {
-  @extend .grid_intro;
-  margin-top: 12rem;
+	@extend .grid_intro;
+	margin-top: 12rem;
 }
 .grid_intro_bottom {
-  @extend .grid_intro;
-  margin-bottom: 12rem;
+	@extend .grid_intro;
+	margin-bottom: 12rem;
 }
 
 .btn_trending {
-  @include basicbtn($--application-yellow, black);
-  margin-left: 2rem;
-  margin-bottom: 4rem;
-  @media(min-width: 500px) {
-    margin-left: 4rem;
-  }
+	@include basicbtn($--application-yellow, black);
+	margin-left: 2rem;
+	margin-bottom: 4rem;
+	@media (min-width: 500px) {
+		margin-left: 4rem;
+	}
 }
 .btn_trending_clean {
-  @extend .btn_trending;
-  margin-left: 0;
+	@extend .btn_trending;
+	margin-left: 0;
 }
 .see_more {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 4rem;
-  margin-bottom: 10rem;
-  > a {
-    font-size: 1.8rem;
-    text-decoration: underline;
-    margin-left: 2rem;
-    color: white;
-  }
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 4rem;
+	margin-bottom: 10rem;
+	> a {
+		font-size: 1.8rem;
+		text-decoration: underline;
+		margin-left: 2rem;
+		color: white;
+	}
 }
 .purple_span {
-  @include colored_span($--application-purple);
+	@include colored_span($--application-purple);
 }
 .blue_span {
-  @include colored_span($--application-blue);
+	@include colored_span($--application-blue);
 }
 .yellow_span {
-  @include colored_span($--application-yellow);
+	@include colored_span($--application-yellow);
 }
 .empty_list {
-  margin-top: 4rem;
-  font-size: 5rem;
-  line-height: 1;
+	margin-top: 4rem;
+	font-size: 5rem;
+	line-height: 1;
 }

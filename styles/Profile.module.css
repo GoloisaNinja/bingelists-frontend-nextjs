@@ -11,7 +11,7 @@
 }
 @media (min-width: 500px) {
   .profile_hero {
-    padding: 0 4rem;
+    padding: 0 2rem;
   }
 }
 .profile_hero > h1 {

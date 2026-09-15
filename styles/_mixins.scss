@@ -1,209 +1,209 @@
-@import "variables";
+@import 'variables';
 
 @mixin brandTextHeading {
-  font-size: 10rem;
-  margin-top: 8rem;
-  margin-bottom: 22rem;
-  @media (min-width: 1000px) {
-    font-size: 12rem;
-  }
+	font-size: 10rem;
+	margin-top: 8rem;
+	margin-bottom: 22rem;
+	@media (min-width: 1000px) {
+		font-size: 12rem;
+	}
 }
 @mixin basicHeader {
-  margin-top: 8rem;
-  margin-bottom: 3rem;
-  font-size: 5rem;
-  line-height: 1;
+	margin-top: 8rem;
+	margin-bottom: 3rem;
+	font-size: 5rem;
+	line-height: 1;
 }
 @mixin basicbtn($color, $txt-color) {
-  background: $color;
-  color: $txt-color;
-  border-radius: 5px;
-  padding: 2rem 3rem;
-  font-family: 'Prompt', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 800;
-  border: none;
-  cursor: pointer;
-  transition: all .4s ease-in-out;
-  &:hover {
-    background: darken($color, 8%);
-  }
+	background: $color;
+	color: $txt-color;
+	border-radius: 5px;
+	padding: 2rem 3rem;
+	font-family: 'Prompt', sans-serif;
+	font-size: 1.6rem;
+	font-weight: 800;
+	border: none;
+	cursor: pointer;
+	transition: all 0.4s ease-in-out;
+	&:hover {
+		background: darken($color, 8%);
+	}
 }
 @mixin basicModalContainer {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: $--application-darkblue;
-  z-index: 1001;
-  padding: 2rem;
-  min-width: 325px;
-  max-width: 450px;
-  border-bottom: 5px solid $--application-darktomato;
-  > h4 {
-    font-size: 2.2rem;
-    margin-bottom: 5rem;
-  }
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: $--application-darkblue;
+	z-index: 1001;
+	padding: 2rem;
+	min-width: 325px;
+	max-width: 450px;
+	border-bottom: 5px solid $--application-darktomato;
+	> h4 {
+		font-size: 2.2rem;
+		margin-bottom: 5rem;
+	}
 }
 @mixin basicModalBtnGroupContainer {
-  display: flex;
-  align-items: stretch;
-  > button:first-child {
-    @include basicbtn($--application-blue, white);
-    border-radius: 0;
-    margin-right: 3rem;
-  }
-  >button:last-child {
-    @include basicbtn($--application-darktomato, white);
-    border-radius: 0;
-  }
+	display: flex;
+	align-items: stretch;
+	> button:first-child {
+		@include basicbtn($--application-blue, white);
+		border-radius: 0;
+		margin-right: 3rem;
+	}
+	> button:last-child {
+		@include basicbtn($--application-darktomato, white);
+		border-radius: 0;
+	}
 }
 @mixin basicFullPageContainer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  min-height: 100vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	min-height: 100vh;
 }
 @mixin basicFullPageBG($bgurl, $opacity-value) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
-  background: url($bgurl) center center no-repeat;
-  background-size: cover;
-  opacity: $opacity-value;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	min-width: 50%;
+	min-height: 50%;
+	background: url($bgurl) center center no-repeat;
+	background-size: cover;
+	opacity: $opacity-value;
 }
 @mixin basicFormContainer {
-  padding: 2rem;
-  z-index: 2;
-  > h1 {
-    text-align: center;
-    font-size: 8rem;
-    line-height: 1.2;
-    margin-bottom: 4rem;
-  }
-  > h4 {
-    font-size: 1.6rem;
-    > a {
-      color: $--application-cyan;
-    }
-  }
+	padding: 2rem;
+	z-index: 2;
+	> h1 {
+		text-align: center;
+		font-size: 8rem;
+		line-height: 1.2;
+		margin-bottom: 4rem;
+	}
+	> h4 {
+		font-size: 1.6rem;
+		> a {
+			color: $--application-cyan;
+		}
+	}
 }
 @mixin basicFormStyle {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid white;
-  border-radius: 5px;
-  padding: 4rem 2rem;
-  margin-bottom: 2.2rem;
-  > label {
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-  }
-  > input {
-    border: none;
-    background: white;
-    font-size: 1.8rem;
-    padding: 1rem;
-    color: black;
-    margin-bottom: 2rem;
-  }
+	display: flex;
+	flex-direction: column;
+	border: 1px solid white;
+	border-radius: 5px;
+	padding: 4rem 2rem;
+	margin-bottom: 2.2rem;
+	> label {
+		font-size: 2rem;
+		font-weight: 300;
+		margin-bottom: 1rem;
+	}
+	> input {
+		border: none;
+		background: white;
+		font-size: 1.8rem;
+		padding: 1rem;
+		color: black;
+		margin-bottom: 2rem;
+	}
 }
 
 @mixin show_more_container {
-  display: flex;
-  width: 100%;
-  margin-bottom: 3rem;
+	display: flex;
+	width: 100%;
+	margin-bottom: 3rem;
 }
 @mixin btn_show_more {
-  background: $--application-yellow;
-  color: black;
-  font-weight: 400;
-  padding: 1rem;
-  width: 100%;
-  transition: all .4s ease-in-out;
-  &:hover {
-    background: darken($--application-yellow, 10%);
-  }
-  @media(min-width: 400px) {
-    max-width: 150px;
-  }
+	background: $--application-yellow;
+	color: black;
+	font-weight: 400;
+	padding: 1rem;
+	width: 100%;
+	transition: all 0.4s ease-in-out;
+	&:hover {
+		background: darken($--application-yellow, 10%);
+	}
+	@media (min-width: 400px) {
+		max-width: 150px;
+	}
 }
 @mixin page_hero_nobg {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 0 2rem;
-  @media (min-width: 500px) {
-    padding: 0 4rem;
-  }
-  > h1 {
-    font-size: 6rem;
-    z-index: 2;
-    line-height: 1;
-    text-shadow: 2px 2px 2px #000000;
-    @media (min-width: 400px) {
-      font-size: 7rem;
-    }
-    @media (min-width: 465px) {
-      font-size: 8rem;
-    }
-    @media (min-width: 600px) {
-      font-size: 10rem;
-    }
-  }
-  > h1:nth-child(1) {
-    margin-top: 12rem;
-    word-break: break-word;
-  }
-  > h1:nth-child(2) {
-    margin-bottom: 12rem;
-  }
-  > a:nth-child(3) {
-    display: inline-flex;
-    width: max-content;
-  }
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: 0 2rem;
+	@media (min-width: 500px) {
+		padding: 0 2rem;
+	}
+	> h1 {
+		font-size: 6rem;
+		z-index: 2;
+		line-height: 1;
+		text-shadow: 2px 2px 2px #000000;
+		@media (min-width: 400px) {
+			font-size: 7rem;
+		}
+		@media (min-width: 465px) {
+			font-size: 8rem;
+		}
+		@media (min-width: 600px) {
+			font-size: 10rem;
+		}
+	}
+	> h1:nth-child(1) {
+		margin-top: 12rem;
+		word-break: break-word;
+	}
+	> h1:nth-child(2) {
+		margin-bottom: 12rem;
+	}
+	> a:nth-child(3) {
+		display: inline-flex;
+		width: max-content;
+	}
 }
 @mixin page_hero {
-  @include page_hero_nobg;
-  > h1:nth-child(2) {
-    margin-top: 12rem;
-    margin-bottom: 0;
-  }
-  > h1:last-child {
-    margin-bottom: 12rem;
-  }
+	@include page_hero_nobg;
+	> h1:nth-child(2) {
+		margin-top: 12rem;
+		margin-bottom: 0;
+	}
+	> h1:last-child {
+		margin-bottom: 12rem;
+	}
 }
 @mixin soda_popcorn_hero {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
-  background: url("../public/images/bl_bgimg.webp") no-repeat right top;
-  background-size: 50%;
-  mask-image: linear-gradient(#000, rgba(0,0,0,0));
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	min-width: 50%;
+	min-height: 50%;
+	background: url('../public/images/bl_bgimg.webp') no-repeat right top;
+	background-size: 50%;
+	mask-image: linear-gradient(#000, rgba(0, 0, 0, 0));
 }
 
 @mixin colored_span($color) {
-  color: $color;
+	color: $color;
 }
 @mixin brand_span_blue {
-  color: $--application-lightblue;
+	color: $--application-lightblue;
 }
 @mixin brand_span_yellow {
-  color: $--application-yellow
+	color: $--application-yellow;
 }

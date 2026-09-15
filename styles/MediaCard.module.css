@@ -3,12 +3,22 @@
   flex-direction: column;
   padding: 0.5rem;
   border-bottom: 5px solid gray;
+  height: 100%;
 }
 
+/*
+.movie {
+	//background: linear-gradient($--card-gradient-blue,#000000);
+}
+.tv {
+	//background: linear-gradient($--card-gradient-yellow,#000000);
+}
+*/
 .card_grid {
   display: grid;
-  grid-template-areas: "poster poster" "poster poster" "rating popularity" "info info" "overview overview";
+  grid-template-areas: "poster poster" "poster poster" "rating popularity" "info info";
   grid-gap: 2rem;
+  align-items: stretch;
 }
 
 .media_poster {
@@ -27,29 +37,35 @@
   grid-area: popularity;
 }
 
-.rating, .primary_genre, .item_type, .popularity {
+.rating, .primary_genre, .item_type,
+.popularity {
   display: flex;
   align-items: center;
 }
-.rating > p:first-child, .primary_genre > p:first-child, .item_type > p:first-child, .popularity > p:first-child {
+.rating > p:first-child, .primary_genre > p:first-child, .item_type > p:first-child,
+.popularity > p:first-child {
   font-size: 1rem;
   margin-right: 1rem;
   color: white;
 }
-.rating > p:last-child, .primary_genre > p:last-child, .item_type > p:last-child, .popularity > p:last-child {
+.rating > p:last-child, .primary_genre > p:last-child, .item_type > p:last-child,
+.popularity > p:last-child {
   font-size: 2rem;
   font-weight: 700;
 }
 
-.ratingvalue, .popvalue {
+.ratingvalue,
+.popvalue {
   color: #618DD5;
 }
 
-.ratingvalue .yellow_offset, .popvalue .yellow_offset {
+.ratingvalue .yellow_offset,
+.popvalue .yellow_offset {
   color: #C9C236;
 }
 
 .card_info_container, .card_title_container {
+  flex-grow: 1;
   display: -webkit-box;
   overflow: hidden;
   grid-area: info;
@@ -76,7 +92,7 @@
   display: grid;
   align-items: flex-start;
   grid-gap: 1rem;
-  grid-template-areas: "poster poster" "poster poster" "info info" "type genre" "bottom bottom";
+  grid-template-areas: "poster poster" "poster poster" "info info" "type genre";
 }
 
 .item_type {
@@ -94,6 +110,7 @@
 .card_title_container > p:first-child {
   font-size: 2.2rem;
   margin-bottom: 1rem;
+  flex-grow: 1;
 }
 
 .yellow_offset {
